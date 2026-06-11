@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public int score = 0;
+    private int scorePriv = 0;
     public float playerHealth = 100f;
     public bool hasHammer = false;
     public bool hasRope = false;
@@ -64,6 +65,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // check for changes in variable. update ui if there is a change
         if (inventoryList.Count != inventoryListPriv.Count)
         {
             updateUI.updateInventory();
@@ -74,6 +77,13 @@ public class GameManager : MonoBehaviour
             {
                 inventoryListPriv.Add(item);
             }
+        }
+
+        if (score != scorePriv)
+        {
+            updateUI.updateScore();
+
+            scorePriv = score; // shallow copies only apply for lists right
         }
     }
 }

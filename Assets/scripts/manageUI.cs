@@ -70,11 +70,6 @@ public class manageUI : MonoBehaviour
         }
         
     }
-    public void RemoveItem(int index)
-    {
-        Destroy(inventoryContainer.GetChild(index).gameObject);
-    }
-
     // this is so unnecessary
     IEnumerator hideElement(Transform element, float delay = 0.0f)
     {
@@ -124,14 +119,18 @@ public class manageUI : MonoBehaviour
         interactiveBox.gameObject.SetActive(false);
     }
 
+    public void updateScore()
+    {
+        int score = GameManager.Instance.score;
+        scoreText.text = "Bars Collected: " + score.ToString();
+    }
+
     
 
 
     // Update is called once per frame
     void Update()
     {
-        /// update score
-        int score = GameManager.Instance.score;
-        scoreText.text = "Bars Collected: " + score.ToString();
+        
     }
 }
