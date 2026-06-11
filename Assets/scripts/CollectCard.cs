@@ -39,6 +39,7 @@ public class CollectCard : MonoBehaviour
             GameManager.Instance.hasKeyCard = true;
             playOnCollect();
             updateUI.AddItem("Admin Card");
+            updateUI.showCollectItem("You found an Admin Card!", "'Jane Doe, 27. Quant Engineer. \n I wonder what this card is for...'");
             Destroy(gameObject);
             
         }

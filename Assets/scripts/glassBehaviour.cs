@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,45 +10,47 @@ using UnityEngine;
 public class glassBehaviour : MonoBehaviour
 {
     public GameObject brokenGlass;
+    public manageUI UpdateUI;
 
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private Transform parentTransform;
-
-
-
+    private Material material1;
+    [SerializeField] private Material material2;
+    private MeshRenderer meshRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        meshRenderer = gameObject.GetComponent<MeshRenderer>();
+
         
     }
 
-    void removeGlass()
+    void removeGlassObj()
     {
         Destroy(brokenGlass);
     }
-    void OnCollisionEnter(Collision collision)
+    public void breakGlass()
     {
         brokenGlass.SetActive(true);
         gameObject.SetActive(false);
 
-        Invoke(nameof(removeGlass), 5.0f);
+        Invoke(nameof(removeGlassObj), 5.0f);
     }
+
+    public void breakGlassPrompt()
+    {
+        UpdateUI.showInteractiveOption("Press (E) to break glass");
+        
+    }
+
+
+
+    // checks if a) player in range, b) glass in direct player view
 
     // Update is called once per frame
     void Update()
     {
-        print(playerTransform.position);
-
-        /// get distance between parent obj and player
-        float d = (playerTransform.position - parentTransform.position).sqrMagnitude;
-        print(d);
-
-        /// check if distance below a certain threshold. run func if so
-        while (d < Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2) )
-        {
-            print("in range");
-        }
+        
+        
 
     }
 }

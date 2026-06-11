@@ -14,25 +14,23 @@ public class GameManager : MonoBehaviour
 
     // static globals
 
-    public float DISTANCE_THRESHOLD = 10.0f;
+    public float DISTANCE_THRESHOLD = 0.005f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        Debug.Log("GameManager Awake called on: " + gameObject.name);
+        print("GameManager Awake called on: " + gameObject.name);
+
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // persists across scenes
+        DontDestroyOnLoad(gameObject); // persists across scenes 
     }
 
-    void OnDestroy()
-    {
-        Debug.LogWarning("GameManager was destroyed! " + gameObject.name);
-    }
 
     // Update is called once per frame
     void Update()

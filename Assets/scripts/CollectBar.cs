@@ -38,6 +38,8 @@ public class CollectBar : MonoBehaviour
         {
             GameManager.Instance.score += 1;
             playOnCollect();
+            
+
             Destroy(gameObject);
             
         }

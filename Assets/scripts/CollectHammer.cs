@@ -29,17 +29,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
         /// check if colliding w/ player character
         print(collision.gameObject.name);
 
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager not found in scene!");
-            return;
-        }
-
         if (collision.gameObject.name == "PlayerCapsule")
         {
             GameManager.Instance.hasHammer = true;
             playOnCollect();
             updateUI.AddItem("Hammer");
+            updateUI.showCollectItem("You found a Hammer!", "'100 kilos of pure metal on a stick. '");
+
             Destroy(gameObject);
 
             
