@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using TMPro;
@@ -42,10 +43,32 @@ public class manageUI : MonoBehaviour
     }
 
     // dynamic inventory functions 
-    public void AddItem(string itemName)
+    public void updateInventory()
     {
-        GameObject slot = Instantiate(itemPrefab, inventoryContainer);
-        slot.GetComponent<TMP_Text>().text = itemName;
+
+        // reset inventory 
+        foreach (Transform child in inventoryContainer.transform.GetComponentInChildren<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
+
+
+        List<string> inventory = GameManager.Instance.inventoryList; 
+        int invLength = inventory.Count;
+        print(invLength);
+
+        // add inv header
+        GameObject inventoryHeader = Instantiate(itemPrefab, inventoryContainer);
+        inventoryHeader.GetComponent<TMP_Text>().text = "Inventory";
+        
+        for (int i = 0; i < invLength; i++)
+        {
+            print(i);
+            
+            GameObject slot = Instantiate(itemPrefab, inventoryContainer);
+            slot.GetComponent<TMP_Text>().text = inventory[i];
+        }
+        
     }
     public void RemoveItem(int index)
     {
@@ -96,13 +119,17 @@ public class manageUI : MonoBehaviour
 
     }
 
+    public void hideInteractiveOption()
+    {
+        interactiveBox.gameObject.SetActive(false);
+    }
+
     
 
 
     // Update is called once per frame
     void Update()
     {
-
         /// update score
         int score = GameManager.Instance.score;
         scoreText.text = "Bars Collected: " + score.ToString();

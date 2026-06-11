@@ -31,9 +31,16 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (collision.gameObject.name == "PlayerCapsule")
         {
+
+            if (!GameManager.Instance.hasHammer) // prevent it adding the same string multiple times
+            {
+                GameManager.Instance.inventoryList.Add("Hammer");
+            }
+            
             GameManager.Instance.hasHammer = true;
+            
+            
             playOnCollect();
-            updateUI.AddItem("Hammer");
             updateUI.showCollectItem("You found a Hammer!", "'100 kilos of pure metal on a stick. '");
 
             Destroy(gameObject);

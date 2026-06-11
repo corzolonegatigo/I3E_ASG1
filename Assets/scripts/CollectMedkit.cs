@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class CollectCard : MonoBehaviour
+public class CollectMedkit : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public AudioClip collectSound;
+   public AudioClip collectSound;
     public Vector3 rotationSpeed = new Vector3(0f, 60f, 0f);
+
     private manageUI updateUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,13 +37,10 @@ public class CollectCard : MonoBehaviour
 
         if (collision.gameObject.name == "PlayerCapsule")
         {
-            if (!GameManager.Instance.hasKeyCard) // prevent it adding the same string multiple times
-            {
-                GameManager.Instance.inventoryList.Add("Admin Card");
-            }
-            GameManager.Instance.hasKeyCard = true;
+            GameManager.Instance.playerHealth = Mathf.Min(100.0f, GameManager.Instance.playerHealth + 20.0f);
             playOnCollect();
-            updateUI.showCollectItem("You found an Admin Card!", "'Jane Doe, 27. Quant Engineer. \n I wonder what this card is for...'");
+            updateUI.showCollectItem("You found a Medkit!", "'+20hp!!! You feel all better now.'");
+            
 
             Destroy(gameObject);
             

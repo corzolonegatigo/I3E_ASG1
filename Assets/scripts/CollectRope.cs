@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollectCard : MonoBehaviour
+public class CollectRope : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public AudioClip collectSound;
@@ -36,13 +36,14 @@ public class CollectCard : MonoBehaviour
 
         if (collision.gameObject.name == "PlayerCapsule")
         {
-            if (!GameManager.Instance.hasKeyCard) // prevent it adding the same string multiple times
+            if (!GameManager.Instance.hasRope)
             {
-                GameManager.Instance.inventoryList.Add("Admin Card");
+                GameManager.Instance.inventoryList.Add("Rope");
             }
-            GameManager.Instance.hasKeyCard = true;
+            GameManager.Instance.hasRope = true;
             playOnCollect();
-            updateUI.showCollectItem("You found an Admin Card!", "'Jane Doe, 27. Quant Engineer. \n I wonder what this card is for...'");
+            
+            updateUI.showCollectItem("You found a Rope!", "'It goes round and round, round and round.'");
 
             Destroy(gameObject);
             
