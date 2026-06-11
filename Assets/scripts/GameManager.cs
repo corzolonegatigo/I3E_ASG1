@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public int ropeAmt = 0;
     public bool hasKeyCard = false;
 
+    // static globals
+
+    public float DISTANCE_THRESHOLD = 10.0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
