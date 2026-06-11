@@ -66,7 +66,7 @@ public class interactableInRange : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD_ROPE, 2), 1<<9, QueryTriggerInteraction.Ignore))
         {
             
-            print("touching hooks");
+            
             itemInView = "ropeConnection";
             print(hit.collider.gameObject);
 

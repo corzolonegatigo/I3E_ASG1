@@ -55,9 +55,13 @@ public class playerInteraction : MonoBehaviour
         print(itemInRange.objName);
         if (item.Contains("rope"))
         {
-            print("here");
-            connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
-            connectRopeScript.toggleRopePresence();
+            if (GameManager.Instance.hasRope)
+            {
+                print("here");
+                connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
+                connectRopeScript.toggleRopePresence();
+            }
+            
         }
 
     }
