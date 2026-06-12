@@ -43,7 +43,7 @@ public class manageUI : MonoBehaviour
         interactiveBox.gameObject.SetActive(false);
 
         // maybe theres a better way to do this but it just to reduce amount of things you have to assign
-        scoreText = (UI.transform.Find("box")).transform.Find("score").GetComponent<TMP_Text>();
+        scoreText = (UI.transform.Find("ScoreBox")).transform.Find("score").GetComponent<TMP_Text>();
 
     }
 

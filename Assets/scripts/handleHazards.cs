@@ -44,6 +44,11 @@ public class handleHazards : MonoBehaviour
             {
                 GameManager.Instance.playerHealth -= 5;
             }
+
+            if (hazardName.Contains("lazer"))
+            {
+                GameManager.Instance.playerHealth -= 10;
+            }
         }
         
        
