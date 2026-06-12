@@ -33,7 +33,7 @@ public class climbRope : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        onRope = touchingRope.canClimb;
+        // onRope = touchingRope.canClimb;
     }
 
 

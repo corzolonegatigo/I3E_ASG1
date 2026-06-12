@@ -11,6 +11,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>();
+        GameManager.Instance.collectibles.Add(gameObject);
     }
 
     private void playOnCollect()
@@ -43,7 +44,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             playOnCollect();
             updateUI.showCollectItem("You found a Hammer!", "'100 kilos of pure metal on a stick. '");
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
 
             
             

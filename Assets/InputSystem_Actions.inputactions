@@ -907,6 +907,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "RestartGame",
+                    "type": "Button",
+                    "id": "d2046ccd-4a3c-44b6-9eeb-e432467b3dc7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -986,6 +995,17 @@
                     "action": "ClimbUp",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3437e035-3a30-4c5b-923a-409dc6f84dc1",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RestartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

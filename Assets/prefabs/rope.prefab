@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4628576504574445458}
   - component: {fileID: 8027942658156876814}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +110,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dc79cefa77aa0784e91e8a2bf1d28d0a, type: 3}
       propertyPath: m_Name
       value: rope
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dc79cefa77aa0784e91e8a2bf1d28d0a, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

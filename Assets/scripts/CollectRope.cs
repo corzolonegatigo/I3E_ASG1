@@ -10,6 +10,7 @@ public class CollectRope : MonoBehaviour
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>();
+        GameManager.Instance.collectibles.Add(gameObject);
     }
 
     private void playOnCollect()
@@ -23,6 +24,7 @@ public class CollectRope : MonoBehaviour
                 print("no valid sound");
             }
     }
+
     void OnCollisionEnter(Collision collision)
     {
         /// check if colliding w/ player character
@@ -45,7 +47,7 @@ public class CollectRope : MonoBehaviour
             
             updateUI.showCollectItem("You found a Rope!", "'It goes round and round, round and round.'");
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             
         }
     }

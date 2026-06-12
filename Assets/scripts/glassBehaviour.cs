@@ -20,7 +20,7 @@ public class glassBehaviour : MonoBehaviour
 
     void removeGlassObj()
     {
-        Destroy(brokenGlass);
+        brokenGlass.SetActive(false);
     }
     public void breakGlass()
     {

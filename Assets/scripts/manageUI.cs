@@ -24,6 +24,7 @@ public class manageUI : MonoBehaviour
     private RectTransform healthBar;
     [SerializeField]
     private RectTransform healthBarContainer;
+    
 
 
 
@@ -31,6 +32,7 @@ public class manageUI : MonoBehaviour
     private Transform collectdItemBox;
     private TMP_Text scoreText;
     private Transform interactiveBox;
+    private Transform deathScreen;
 
     void Start()
     {
@@ -41,6 +43,8 @@ public class manageUI : MonoBehaviour
 
         interactiveBox = UI.transform.Find("InteractivePromptBox");
         interactiveBox.gameObject.SetActive(false);
+
+        deathScreen = UI.transform.Find("GameOver");
 
         // maybe theres a better way to do this but it just to reduce amount of things you have to assign
         scoreText = (UI.transform.Find("ScoreBox")).transform.Find("score").GetComponent<TMP_Text>();
@@ -145,6 +149,16 @@ public class manageUI : MonoBehaviour
         healthBar.sizeDelta = new Vector2( width , height );
 
     }
+
+    public void gameOver()
+    {
+        deathScreen.gameObject.SetActive(true);
+    }
+
+    public void gameRestart()
+    {
+        deathScreen.gameObject.SetActive(false);
+    }
     
 
     
@@ -153,6 +167,8 @@ public class manageUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+
+
     }
 }

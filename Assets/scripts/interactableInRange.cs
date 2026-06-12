@@ -33,16 +33,11 @@ public class interactableInRange : MonoBehaviour
         ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
          // checks if hit by raycast ray  ,
+        Debug.DrawRay(transform.position, transform.forward, Color.green);
         if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10, QueryTriggerInteraction.Ignore))
         {
-
             if (GameManager.Instance.hasHammer == GameManager.Instance.hasHammer)
             {
-
-                print("hit");
-                print("in range");
-
-                print(hit.collider.gameObject.name);
 
 
                 objName = hit.collider.name;
@@ -50,16 +45,21 @@ public class interactableInRange : MonoBehaviour
                 if (objName.Contains("glass"))
                 {
 
-                    print("glass in range");
                     glassBehaviour breakGlass = hit.collider.GetComponent<glassBehaviour>(); 
                     interactFunction = breakGlass;
                     updateUI.showInteractiveOption("Press (E) to break glass");
                     itemInView = "glass";  
                     
                 } 
+                if (objName.Contains("door"))
+                {
+                    
+                }
 
-                return hit.collider.gameObject;
+                
             }
+
+            return hit.collider.gameObject;
 
         }
 

@@ -30,11 +30,14 @@ public class GameManager : MonoBehaviour
     public bool hasHammer = false;
     public bool hasRope = false;
     public bool hasKeyCard = false;
+    public bool gameOver = false;
 
     public List<string> inventoryList = new List<string>(); // no need to change capacity (i dont have that many items lmao)
     private List<string> inventoryListPriv = new List<string>();
 
     public manageUI updateUI;
+
+    public List<GameObject> collectibles = new List<GameObject>();
 
     // static globals
 
@@ -62,6 +65,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>(); // i would put this in awake but im scared it doesnt work
+    }
+
+    public void Reset()
+    {
+        gameOver = false;
+        score = 0;
+        playerHealth = 100f;
+        hasHammer = false;
+        hasKeyCard = false;
+        hasRope = false;
+        inventoryList = new List<string>();
+
+        foreach (GameObject item in collectibles)
+        {
+            item.SetActive(true);
+        }
+
     }
 
 
@@ -94,6 +114,13 @@ public class GameManager : MonoBehaviour
             updateUI.updateHealth();
 
             playerHealthPriv = playerHealth;
+        }
+
+        if (playerHealth <= 0)
+        {
+            gameOver = true;
+            updateUI.gameOver();
+
         }
     }
 }

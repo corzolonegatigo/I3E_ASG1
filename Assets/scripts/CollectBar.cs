@@ -9,7 +9,7 @@ public class CollectBar : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        GameManager.Instance.collectibles.Add(gameObject);
     }
 
     private void playOnCollect()
@@ -40,7 +40,7 @@ public class CollectBar : MonoBehaviour
             playOnCollect();
             
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             
         }
     }

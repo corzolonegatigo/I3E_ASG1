@@ -10,6 +10,7 @@ public class CollectCard : MonoBehaviour
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>();
+        GameManager.Instance.collectibles.Add(gameObject);
     }
 
     private void playOnCollect()
@@ -44,7 +45,7 @@ public class CollectCard : MonoBehaviour
             playOnCollect();
             updateUI.showCollectItem("You found an Admin Card!", "'Jane Doe, 27. Quant Engineer. \n I wonder what this card is for...'");
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             
         }
     }

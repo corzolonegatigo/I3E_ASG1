@@ -11,6 +11,7 @@ public class CollectMedkit : MonoBehaviour
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>();
+        GameManager.Instance.collectibles.Add(gameObject);
     }
 
     private void playOnCollect()
@@ -42,7 +43,7 @@ public class CollectMedkit : MonoBehaviour
             updateUI.showCollectItem("You found a Medkit!", "'+20hp!!! You feel all better now.'");
             
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             
         }
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8370719479622836824}
   - component: {fileID: 7778473690885390751}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: glassObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 5.26, y: 5.62, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: -8987807142867273523, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8920215044035992924, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_LocalScale.x
@@ -114,9 +118,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8015085717856467734, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -7385376214000362389, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7051246016660575627, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6599271472219001609, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Materials.Array.size
@@ -126,6 +138,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9133147dd50bacc4cae97f3b1bbd8e18, type: 2}
+    - target: {fileID: -6015388582723443931, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5872484984266502008, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5114179318402146718, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4886692838777282171, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4842424933306055585, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -133,6 +161,10 @@ PrefabInstance:
     - target: {fileID: -4547981120327711489, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4506268681737521089, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4105866490634759946, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
@@ -150,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -891119930641683546, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -650433988561056430, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -166,17 +202,45 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 581883274645014983, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Name
       value: broken glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456425671891200910, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540942382900784979, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2002710927288318493, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2313583468251769960, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672151309006878568, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2771740210987029192, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805533911925737701, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909371897404457380, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
@@ -194,6 +258,14 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5609910055932686177, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6287119445229694003, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6756656063850542135, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -201,6 +273,10 @@ PrefabInstance:
     - target: {fileID: 6756656063850542135, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_ProvidesContacts
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563349921869784719, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7563349921869784719, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_IsActive
@@ -213,6 +289,14 @@ PrefabInstance:
     - target: {fileID: 8111594804977965839, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149627159468415680, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233413386835893973, guid: 18d5a03c26a97b04287242657d404145, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8265067130291370858, guid: 18d5a03c26a97b04287242657d404145, type: 3}
       propertyPath: m_Convex
@@ -823,7 +907,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::glassBehaviour
   brokenGlass: {fileID: 7335330481780181725}
-  UpdateUI: {fileID: 0}
 --- !u!1 &8945120974574007954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8149627159468415680, guid: 18d5a03c26a97b04287242657d404145, type: 3}

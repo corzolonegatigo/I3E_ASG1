@@ -2,7 +2,9 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -19,6 +21,7 @@ public class playerInteraction : MonoBehaviour
 
     // reading inputs (outside of character controller)
     public InputActionReference interact;
+    public InputActionReference restartGame;
     public interactableInRange itemInRange;
 
 
@@ -31,39 +34,62 @@ public class playerInteraction : MonoBehaviour
         updateUI = FindFirstObjectByType<manageUI>();
     }
 
-    public void OnEnable() // from ref
+    private void OnEnable() // from ref
     {
         interact.action.started += Interact;
+        restartGame.action.started += restart;
+        print("enabled");
     }
 
     private void Interact(InputAction.CallbackContext obj) // func itself from ref. code inside func is original
     {
         print("interacted");
 
-        item = itemObj.name;
+        print(itemObj);
+
+        if (itemObj != null)
+        {
+            item = itemObj.name;
         
-
-        if (item == "glass")
-        {
-            glassBehaviour glassScript = itemObj.GetComponent<glassBehaviour>();
-            glassScript.breakGlass();
-
-            updateUI.hideInteractiveOption();
-            
-        }  
-
-        print(itemInRange.objName);
-        if (item.Contains("rope"))
-        {
-            if (GameManager.Instance.hasRope)
+            print(item + "here");
+            if (item == "glass")
             {
-                print("here");
-                connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
-                connectRopeScript.toggleRopePresence();
+                glassBehaviour glassScript = itemObj.GetComponent<glassBehaviour>();
+                glassScript.breakGlass();
+                print("break glass");
+
+                updateUI.hideInteractiveOption();
+                
+            }  
+
+            print(itemInRange.objName);
+            if (item.Contains("rope"))
+            {
+                if (GameManager.Instance.hasRope)
+                {
+                    print("here");
+                    connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
+                    connectRopeScript.toggleRopePresence();
+                }
+                
             }
-            
         }
 
+        
+
+    }
+
+    private void restart(InputAction.CallbackContext obj)
+    {
+        print("here"); 
+        if (GameManager.Instance.gameOver)
+        {
+            print("game over");
+            GameManager.Instance.Reset();
+            updateUI.gameRestart();
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
         // Update is called once per frame
     void Update()

@@ -24,19 +24,17 @@ public class handleHazards : MonoBehaviour
         height = col.height;
         rad = col.radius;
 
-        InvokeRepeating(nameof(checkIfInHazardZone), 0f, 1.0f);
+        InvokeRepeating(nameof(checkIfInHazardZone), 0f, 0.5f);
         
     }
 
     void checkIfInHazardZone()
     {
-        RaycastHit hit;
-
         bounds = rend.bounds;
         p1 = new Vector3(bounds.center.x, bounds.center.y + height/2 , bounds.center.z);
         p2 = new Vector3(bounds.center.x, bounds.center.y - height/2, bounds.center.z);
 
-        Collider[] itemsTouching = Physics.OverlapCapsule(p1, p2, rad*2, 1<<7, QueryTriggerInteraction.Collide);
+        Collider[] itemsTouching = Physics.OverlapCapsule(p1, p2, rad, 1<<7, QueryTriggerInteraction.Collide);
         foreach (Collider item in itemsTouching)
         {
             string hazardName = item.name;
