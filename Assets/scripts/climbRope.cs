@@ -7,11 +7,14 @@ using UnityEngine.Scripting.APIUpdating;
 /// <summary>
 /// 
 /// 
+/// 
+/// retired unless im willing to rewrite character controller 
 /// https://www.youtube.com/watch?v=ONlMEZs9Rgw again for reading input and (the concept of) moving player with rigidbody
 /// https://docs.unity3d.com/6000.2/Documentation/ScriptReference/Rigidbody-linearVelocity.html linear velo
 /// </summary>
 public class climbRope : MonoBehaviour
 {
+
 
     ropeCollisionDetection touchingRope;
 

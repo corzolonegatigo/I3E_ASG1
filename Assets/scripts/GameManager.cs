@@ -24,10 +24,13 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
     private int scorePriv = 0;
+
     public float playerHealth = 100f;
+    private float playerHealthPriv = 100f;
     public bool hasHammer = false;
     public bool hasRope = false;
     public bool hasKeyCard = false;
+
     public List<string> inventoryList = new List<string>(); // no need to change capacity (i dont have that many items lmao)
     private List<string> inventoryListPriv = new List<string>();
 
@@ -84,6 +87,13 @@ public class GameManager : MonoBehaviour
             updateUI.updateScore();
 
             scorePriv = score; // shallow copies only apply for lists right
+        }
+
+        if (playerHealth != playerHealthPriv)
+        {
+            updateUI.updateHealth();
+
+            playerHealthPriv = playerHealth;
         }
     }
 }

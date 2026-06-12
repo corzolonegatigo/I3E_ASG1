@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using TMPro;
+using Unity.Mathematics;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,10 @@ public class manageUI : MonoBehaviour
     
     [SerializeField]
     private Transform inventoryContainer;
+    [SerializeField]
+    private RectTransform healthBar;
+    [SerializeField]
+    private RectTransform healthBarContainer;
 
 
 
@@ -124,6 +129,23 @@ public class manageUI : MonoBehaviour
         int score = GameManager.Instance.score;
         scoreText.text = "Bars Collected: " + score.ToString();
     }
+
+    public void updateHealth()
+    {
+        float health = GameManager.Instance.playerHealth;
+        float height = 80.0f; //its not changing anyways. prevents any weirdness
+
+        float maxWidth = healthBarContainer.rect.width;
+        float width = maxWidth * (health / 100.0f) ;
+
+        print(width);
+        print(height);
+        print(health/100.0f);
+
+        healthBar.sizeDelta = new Vector2( width , height );
+
+    }
+    
 
     
 
