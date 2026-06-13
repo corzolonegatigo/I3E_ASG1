@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4628576504574445458}
-  - component: {fileID: 8027942658156876814}
+  - component: {fileID: 3656174571929596529}
+  - component: {fileID: 7492746222527180662}
   m_Layer: 11
   m_Name: rope
   m_TagString: Untagged
@@ -27,13 +28,34 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.60133, y: 0, z: 9.51157}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3359, y: 1.3359, z: 1.3359}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 473735154567474782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8027942658156876814
+--- !u!65 &3656174571929596529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044989883762169971}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67, y: 0.27, z: 0.69}
+  m_Center: {x: 0.09, y: 0, z: 0}
+--- !u!114 &7492746222527180662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,9 +64,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4044989883762169971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3560c5da99d7f5469e16b167dec3d4c, type: 3}
+  m_Script: {fileID: 11500000, guid: b57283948a1f22a42a5accd388612fc7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollectRope
+  m_EditorClassIdentifier: Assembly-CSharp::CollectUnique
   collectSound: {fileID: 0}
   rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!1001 &79291150227638709

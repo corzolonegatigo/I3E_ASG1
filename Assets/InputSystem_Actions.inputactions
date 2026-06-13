@@ -1019,7 +1019,7 @@
                 {
                     "name": "",
                     "id": "4fdd87e0-3f4b-4a81-a166-1e669fc606bd",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -25,27 +25,15 @@ public class CollectMedkit : MonoBehaviour
                 print("no valid sound");
             }
     }
-    void OnCollisionEnter(Collision collision)
+    public void onCollect()
     {
-        /// check if colliding w/ player character
-        print(collision.gameObject.name);
 
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager not found in scene!");
-            return;
-        }
-
-        if (collision.gameObject.name == "PlayerCapsule")
-        {
-            GameManager.Instance.playerHealth = Mathf.Min(100.0f, GameManager.Instance.playerHealth + 20.0f);
-            playOnCollect();
-            updateUI.showCollectItem("You found a Medkit!", "'+20hp!!! You feel all better now.'");
-            
-
-            gameObject.SetActive(false);
-            
-        }
+        GameManager.Instance.playerHealth = Mathf.Min(100.0f, GameManager.Instance.playerHealth + 20.0f);
+        playOnCollect();
+        updateUI.showCollectItem("You found a Medkit!", "'+20hp!!! You feel all better now.'");
+        
+        gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame

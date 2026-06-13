@@ -23,26 +23,16 @@ public class CollectBar : MonoBehaviour
                 print("no valid sound");
             }
     }
-    void OnCollisionEnter(Collision collision)
+    public void onCollect()
     {
-        /// check if colliding w/ player character
-        print(collision.gameObject.name);
+        
+        GameManager.Instance.score += 1;
+        playOnCollect();
+        
 
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager not found in scene!");
-            return;
-        }
-
-        if (collision.gameObject.name == "PlayerCapsule")
-        {
-            GameManager.Instance.score += 1;
-            playOnCollect();
-            
-
-            gameObject.SetActive(false);
-            
-        }
+        gameObject.SetActive(false);
+        
+    
     }
 
     // Update is called once per frame

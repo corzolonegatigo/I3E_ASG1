@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.ProBuilder.Shapes;
 
 
 /// <summary>
@@ -47,6 +48,38 @@ public class playerInteraction : MonoBehaviour
     private void Collect(InputAction.CallbackContext obj)
     {
         print("collect");
+
+        if (itemObj != null)
+        {
+            if (itemObj.layer == 9)
+            {
+                item = itemObj.name;
+
+                if (item.Contains("goldbar"))
+                {
+                    CollectBar bar = itemObj.GetComponent<CollectBar>();
+                    bar.onCollect();
+                    print("bar");
+
+                    updateUI.hideInteractiveOption();
+                } else if  (item.Contains("medkit"))
+                {
+                    CollectMedkit medkit = itemObj.GetComponent<CollectMedkit>();
+                    medkit.onCollect();
+                    print("kit");
+
+                } else
+                {
+                    CollectUnique unique = itemObj.GetComponent<CollectUnique>();
+                    unique.onCollect();
+                    print("unique");
+                }
+                
+            }
+
+            
+        }
+        
         
     }
     private void Interact(InputAction.CallbackContext obj) // func itself from ref. code inside func is original
@@ -55,32 +88,47 @@ public class playerInteraction : MonoBehaviour
 
         print(itemObj);
 
-        if ((itemObj != null) && (itemObj.layer == 10))
+        if (itemObj != null)
         {
-            item = itemObj.name;
+            if (itemObj.layer == 10)
+            {
+                item = itemObj.name;
         
-            print(item + "here");
-            if (item == "glass")
-            {
-                glassBehaviour glassScript = itemObj.GetComponent<glassBehaviour>();
-                glassScript.breakGlass();
-                print("break glass");
-
-                updateUI.hideInteractiveOption();
-                
-            }  
-
-            print(itemInRange.objName);
-            if (item.Contains("rope"))
-            {
-                if (GameManager.Instance.hasRope)
+                print(item + "here");
+                if (item == "glass")
                 {
-                    print("here");
-                    connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
-                    connectRopeScript.toggleRopePresence();
+                    glassBehaviour glassScript = itemObj.GetComponent<glassBehaviour>();
+                    glassScript.breakGlass();
+                    print("break glass");
+
+                    updateUI.hideInteractiveOption();
+                    
+                }  
+
+               
+                else if (item.Contains("rope"))
+                {
+                    if (GameManager.Instance.hasRope)
+                    {
+                        print("here");
+                        connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
+                        connectRopeScript.toggleRopePresence();
+                    }
+                    
+                } else if (item.Contains("Door"))
+                {
+                    print("interacting with door");
+                    doorBehaviour doorScript = itemObj.GetComponent<doorBehaviour>();
+                    doorScript.openDoor();
+
+                    updateUI.hideInteractiveOption();
                 }
-                
+
+
+                 print(itemInRange.objName);
+
             }
+            
         }
 
         

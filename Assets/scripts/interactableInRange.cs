@@ -37,14 +37,11 @@ public class interactableInRange : MonoBehaviour
          // checks if hit by raycast ray
         Debug.DrawRay(transform.position, transform.forward, Color.green);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10 + 1<<11, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10 | 1<<9, QueryTriggerInteraction.Ignore))
         {
 
-            print(hit.collider.GetComponent<GameObject>().name);
-            
-
             // get layer value. reads ray detecting both tgt and run layer specific code so that player cannot collect item and interact with a gameobject at the same time
-            int layer = hit.collider.GetComponent<GameObject>().layer;
+            int layer = hit.collider.gameObject.layer;
 
             objName = hit.collider.name;
 
@@ -64,11 +61,11 @@ public class interactableInRange : MonoBehaviour
                 }
 
                 
-            else if (objName.Contains("door"))
+            else if (objName.Contains("Door"))
             
             {
 
-                string doorType = hit.collider.GetComponent<GameObject>().tag;
+                string doorType = hit.collider.gameObject.tag;
 
                 if (doorType != "OpenAccess")
                 {
@@ -106,7 +103,15 @@ public class interactableInRange : MonoBehaviour
                     updateUI.showInteractiveOption("Click (LMB) to collect Medkit");
 
                     itemInView = "medkit";
-                } 
+                } else
+                {
+                    CollectUnique unique = hit.collider.GetComponent<CollectUnique>();
+                    interactFunction = unique;
+                    updateUI.showInteractiveOption("Click (LMB) to collect " + char.ToUpper(gameObject.name[0]) + gameObject.name.Substring(1));
+
+                    itemInView = "unique";
+                    
+                }
             }
 
             return hit.collider.gameObject;

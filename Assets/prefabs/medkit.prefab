@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4878600946203350797}
   - component: {fileID: 1011081675810206473}
+  - component: {fileID: 6902556313862410421}
   m_Layer: 11
   m_Name: medkit
   m_TagString: Untagged
@@ -47,6 +48,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectMedkit
   collectSound: {fileID: 0}
   rotationSpeed: {x: 0, y: 60, z: 0}
+--- !u!65 &6902556313862410421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8963214361929279003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.26, z: 1}
+  m_Center: {x: 0, y: 0.48, z: 0.11}
 --- !u!1001 &7763424415124074968
 PrefabInstance:
   m_ObjectHideFlags: 0

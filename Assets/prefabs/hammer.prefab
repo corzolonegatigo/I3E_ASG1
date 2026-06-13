@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7219668196873533045}
-  - component: {fileID: 5823199740967862452}
   - component: {fileID: 4582559943166962469}
+  - component: {fileID: 3546721631093993124}
   m_Layer: 11
   m_Name: hammer
   m_TagString: Untagged
@@ -34,20 +34,6 @@ Transform:
   - {fileID: 6681421431544544989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5823199740967862452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3420521656258093659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67ef20fcb97c1714db3db8a5ab79a1ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  collectSound: {fileID: 0}
-  rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!65 &4582559943166962469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,6 +55,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.45}
   m_Center: {x: 0.12, y: 0.16, z: 0.14}
+--- !u!114 &3546721631093993124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420521656258093659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57283948a1f22a42a5accd388612fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectUnique
+  collectSound: {fileID: 0}
+  rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!1001 &6571759116683417910
 PrefabInstance:
   m_ObjectHideFlags: 0

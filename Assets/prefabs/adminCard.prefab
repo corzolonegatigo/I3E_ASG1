@@ -283,8 +283,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8036518105453902880}
-  - component: {fileID: 8939660260860817720}
   - component: {fileID: 8144872070325984296}
+  - component: {fileID: 3728266319645621004}
   m_Layer: 11
   m_Name: adminCard
   m_TagString: Untagged
@@ -308,20 +308,6 @@ Transform:
   - {fileID: 2201461399700985247}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &8939660260860817720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000500155178763423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99657638d52944c43a090b18307768e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollectCard
-  collectSound: {fileID: 0}
-  rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!65 &8144872070325984296
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -343,6 +329,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.24, y: 1, z: 1.15}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3728266319645621004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000500155178763423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57283948a1f22a42a5accd388612fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectUnique
+  collectSound: {fileID: 0}
+  rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!1 &5770432480661487382
 GameObject:
   m_ObjectHideFlags: 0

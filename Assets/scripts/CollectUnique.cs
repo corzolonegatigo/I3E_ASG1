@@ -23,57 +23,53 @@ public class CollectUnique : MonoBehaviour
                 print("no valid sound");
             }
     }
-    void OnCollisionEnter(Collision collision)
+    public void onCollect()
     {
-        /// check if colliding w/ player character
-        print(collision.gameObject.name);
 
-        if (collision.gameObject.name == "PlayerCapsule")
+        // check what object this script is attached to. i think you can have it so that you initialise a variable which is a ref to the related bool, but i dont have internet rn
+        // not an if...elif...else cause 
+        if (gameObject.name == "adminCard")
         {
-            // check what object this script is attached to. i think you can have it so that you initialise a variable which is a ref to the related bool, but i dont have internet rn
-            // not an if...elif...else cause 
-            if (gameObject.name == "adminCard")
+            if (!GameManager.Instance.hasKeyCard) // prevent it adding the same string multiple times
             {
-                if (!GameManager.Instance.hasKeyCard) // prevent it adding the same string multiple times
-                {
-                    GameManager.Instance.inventoryList.Add("Admin Card");
-                    GameManager.Instance.hasKeyCard = true;
-                }
-                
-                playOnCollect();
-                updateUI.showCollectItem("You found an Admin Card!", "'Jane Doe, 27. Quant Engineer. \n I wonder what this card is for...'");
-            } else if (gameObject.name == "hammer")
-            {
-                 if (!GameManager.Instance.hasHammer) // prevent it adding the same string multiple times
-                {
-                    GameManager.Instance.inventoryList.Add("Hammer");
-                    GameManager.Instance.hasHammer = true;
-                }
-                
-                playOnCollect();
-                updateUI.showCollectItem("You found a Hammer!", "'100 kilos of pure metal on a stick. '");
-
-            } else if (gameObject.name == "rope")
-            {
-                if (!GameManager.Instance.hasRope) // prevent it adding the same string multiple times
-                {
-                    GameManager.Instance.inventoryList.Add("Rope");
-                    GameManager.Instance.hasRope = true;
-                }
-                
-                playOnCollect();
-                
-                updateUI.showCollectItem("You found a Rope!", "'It goes round and round, round and round.'");
-            } else
-            {
-                print("attached to "+ gameObject.name + "which is not in the list of uniquye collectibles");
+                GameManager.Instance.inventoryList.Add("Admin Card");
+                GameManager.Instance.hasKeyCard = true;
             }
             
-
-            gameObject.SetActive(false);
+            playOnCollect();
+            updateUI.showCollectItem("You found an Admin Card!", "'Jane Doe, 27. Quant Engineer. \n I wonder what this card is for...'");
+        } else if (gameObject.name == "hammer")
+        {
+                if (!GameManager.Instance.hasHammer) // prevent it adding the same string multiple times
+            {
+                GameManager.Instance.inventoryList.Add("Hammer");
+                GameManager.Instance.hasHammer = true;
+            }
             
+            playOnCollect();
+            updateUI.showCollectItem("You found a Hammer!", "'100 kilos of pure metal on a stick. '");
+
+        } else if (gameObject.name == "rope")
+        {
+            if (!GameManager.Instance.hasRope) // prevent it adding the same string multiple times
+            {
+                GameManager.Instance.inventoryList.Add("Rope");
+                GameManager.Instance.hasRope = true;
+            }
+            
+            playOnCollect();
+            
+            updateUI.showCollectItem("You found a Rope!", "'It goes round and round, round and round.'");
+        } else
+        {
+            print("attached to "+ gameObject.name + "which is not in the list of uniquye collectibles");
         }
+        
+
+        gameObject.SetActive(false);
+        
     }
+    
 
     // Update is called once per frame
     void Update()

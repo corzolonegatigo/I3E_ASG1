@@ -29508,6 +29508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::playerInteraction
   interact: {fileID: -8206894003252520457, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   restartGame: {fileID: -717275363383596385, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  collectItem: {fileID: 3782653894094276542, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   itemInRange: {fileID: 722132753}
 --- !u!114 &1779955585
 MonoBehaviour:
@@ -35879,7 +35880,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5823199740967862452, guid: eddf566ff69a394489dbbcd03c206f07, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

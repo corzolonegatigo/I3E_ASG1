@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 
 /// <summary>
@@ -37,7 +38,7 @@ public class doorBehaviour : MonoBehaviour
         origin = new Vector3(bounds.center.x, bounds.center.y, bounds.center.z);
         extents = new Vector3(bounds.extents.x * 4, bounds.extents.y, bounds.extents.z * 4);
 
-        Collider[] itemsTouching = Physics.OverlapBox(origin, extents, Quaternion.identity, 1<<3, QueryTriggerInteraction.Collide);
+        Collider[] itemsTouching = Physics.OverlapBox(origin, extents*5, Quaternion.identity, 1<<3, QueryTriggerInteraction.Collide);
         foreach (Collider item in itemsTouching)
         {
             // just verify is it is the player in range
@@ -49,24 +50,39 @@ public class doorBehaviour : MonoBehaviour
 
         if (!inRange)
         {
-            closeDoor();
+            print("closing door auto");
+            if (doorOpen)
+            {
+                animator.SetTrigger("closeDoor");
+                doorOpen = false;
+            }
+            
+
+            
         }
         
     }
 
     public void openDoor()
     {
-        animator.SetTrigger("openDoor");
-        doorOpen = true;
+
+        doorOpen = !doorOpen;
+
+        if (doorOpen)
+        {
+            animator.SetTrigger("openDoor");
+            
+        } else
+        {
+            animator.SetTrigger("closeDoor");
+            
+        }
+        print("door state" + doorOpen);
+        
+        
         print(gameObject.transform.rotation.y);
     }
 
-    public void closeDoor()
-    {
-        animator.SetTrigger("closeDoor");
-        doorOpen = false;
-        print(gameObject.transform.rotation.y);
-    }
     // Update is called once per frame
     void Update()
     {
