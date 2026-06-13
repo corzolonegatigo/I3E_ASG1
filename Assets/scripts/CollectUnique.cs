@@ -28,7 +28,7 @@ public class CollectUnique : MonoBehaviour
 
         // check what object this script is attached to. i think you can have it so that you initialise a variable which is a ref to the related bool, but i dont have internet rn
         // not an if...elif...else cause 
-        if (gameObject.name == "adminCard")
+        if (gameObject.name == "admin Card")
         {
             if (!GameManager.Instance.hasKeyCard) // prevent it adding the same string multiple times
             {

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public bool hasRope = false;
     public bool hasKeyCard = false;
     public bool gameOver = false;
+    public bool itemPicked = false;
 
     public List<string> inventoryList = new List<string>(); // no need to change capacity (i dont have that many items lmao)
     private List<string> inventoryListPriv = new List<string>();
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public float DISTANCE_THRESHOLD = 3.0f;
     public float DISTANCE_THRESHOLD_ROPE = 5.0f;
+    public float PICKUP_DISTANCE = 2.0f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

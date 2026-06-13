@@ -22,6 +22,8 @@ public class interactableInRange : MonoBehaviour
     private Component interactFunction;
     public manageUI updateUI;
 
+    private pickUpItem item;
+
     // reading inputs (outside of character controller)
 
     void Start()
@@ -37,14 +39,14 @@ public class interactableInRange : MonoBehaviour
          // checks if hit by raycast ray
         Debug.DrawRay(transform.position, transform.forward, Color.green);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10 | 1<<9, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10 | 1<<11 | 1<<6, QueryTriggerInteraction.Ignore))
         {
 
             // get layer value. reads ray detecting both tgt and run layer specific code so that player cannot collect item and interact with a gameobject at the same time
             int layer = hit.collider.gameObject.layer;
 
             objName = hit.collider.name;
-
+            
 
             if (layer == 10)
             {
@@ -83,8 +85,8 @@ public class interactableInRange : MonoBehaviour
             }
             }
             
-            // only two layers, thus can just run a binary if...else loop
-            else 
+            
+            else if (layer == 11)
             {
                 // with this amount of collectibles, nbd to write a condition for each. though, possible to combine card, rope, hammer scripts tgt.
 
@@ -107,11 +109,23 @@ public class interactableInRange : MonoBehaviour
                 {
                     CollectUnique unique = hit.collider.GetComponent<CollectUnique>();
                     interactFunction = unique;
-                    updateUI.showInteractiveOption("Click (LMB) to collect " + char.ToUpper(gameObject.name[0]) + gameObject.name.Substring(1));
+                    updateUI.showInteractiveOption("Click (LMB) to collect " + char.ToUpper(objName[0]) + objName.Substring(1));
 
                     itemInView = "unique";
                     
                 }
+            } else if (layer == 6) // could use a if...elif...else but this makes it more readable imo (slower though)
+            {
+                string tag = hit.collider.gameObject.tag;
+                if (item == null)
+                {
+                    updateUI.showInteractiveOption("Click (F) to pick up this " + tag);
+                } else
+                {
+                    updateUI.showInteractiveOption("Click (F) to drop");
+                }
+                
+
             }
 
             return hit.collider.gameObject;

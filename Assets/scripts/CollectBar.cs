@@ -6,9 +6,11 @@ public class CollectBar : MonoBehaviour
 
     public AudioClip collectSound;
     public Vector3 rotationSpeed = new Vector3(0f, 60f, 0f);
+    private manageUI updateUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        updateUI = FindFirstObjectByType<manageUI>();
         GameManager.Instance.collectibles.Add(gameObject);
     }
 
@@ -29,7 +31,7 @@ public class CollectBar : MonoBehaviour
         GameManager.Instance.score += 1;
         playOnCollect();
         
-
+        updateUI.showCollectItem("You found a gold bar!", " +1 score!!");
         gameObject.SetActive(false);
         
     

@@ -51,7 +51,7 @@ public class playerInteraction : MonoBehaviour
 
         if (itemObj != null)
         {
-            if (itemObj.layer == 9)
+            if (itemObj.layer == 11)
             {
                 item = itemObj.name;
 
@@ -62,17 +62,23 @@ public class playerInteraction : MonoBehaviour
                     print("bar");
 
                     updateUI.hideInteractiveOption();
+
+                    updateUI.hideInteractiveOption();
                 } else if  (item.Contains("medkit"))
                 {
                     CollectMedkit medkit = itemObj.GetComponent<CollectMedkit>();
                     medkit.onCollect();
                     print("kit");
 
+                    updateUI.hideInteractiveOption();
+
                 } else
                 {
                     CollectUnique unique = itemObj.GetComponent<CollectUnique>();
                     unique.onCollect();
                     print("unique");
+
+                    updateUI.hideInteractiveOption();
                 }
                 
             }
@@ -97,11 +103,13 @@ public class playerInteraction : MonoBehaviour
                 print(item + "here");
                 if (item == "glass")
                 {
-                    glassBehaviour glassScript = itemObj.GetComponent<glassBehaviour>();
-                    glassScript.breakGlass();
-                    print("break glass");
+                    if (GameManager.Instance.hasHammer) {
+                        glassBehaviour glassScript = itemObj.GetComponent<glassBehaviour>();
+                        glassScript.breakGlass();
+                        print("break glass");
 
-                    updateUI.hideInteractiveOption();
+                        updateUI.hideInteractiveOption();
+                    }
                     
                 }  
 
@@ -128,6 +136,7 @@ public class playerInteraction : MonoBehaviour
                  print(itemInRange.objName);
 
             }
+            
             
         }
 

@@ -24,6 +24,9 @@ public class manageUI : MonoBehaviour
     private RectTransform healthBar;
     [SerializeField]
     private RectTransform healthBarContainer;
+
+
+    private Transform itemPickedUpBox;
     
 
 
@@ -45,6 +48,9 @@ public class manageUI : MonoBehaviour
         interactiveBox.gameObject.SetActive(false);
 
         deathScreen = UI.transform.Find("GameOver");
+
+        itemPickedUpBox = UI.transform.Find("ItemPickedUpPrompt");
+        itemPickedUpBox.gameObject.SetActive(false);
 
         // maybe theres a better way to do this but it just to reduce amount of things you have to assign
         scoreText = (UI.transform.Find("ScoreBox")).transform.Find("score").GetComponent<TMP_Text>();
@@ -107,7 +113,7 @@ public class manageUI : MonoBehaviour
 
         collectdItemBox.gameObject.SetActive(true);
         
-        StartCoroutine(hideElement(collectdItemBox, 2.5f));
+        StartCoroutine(hideElement(collectdItemBox, 1.5f));
     }
 
     // to interact with something
@@ -148,6 +154,20 @@ public class manageUI : MonoBehaviour
 
         healthBar.sizeDelta = new Vector2( width , height );
 
+    }
+
+    public void itemPickedUp(string itemname)
+    {
+        Transform itemPickedUp = itemPickedUpBox.transform.Find("ItemPickedUp");
+        TMP_Text itemPickedUpText = itemPickedUp.GetComponent<TMP_Text>();
+
+        itemPickedUpText.text = itemname;
+        itemPickedUpBox.gameObject.SetActive(true);
+    }
+
+    public void hidePickItem()
+    {
+        itemPickedUpBox.gameObject.SetActive(false);
     }
 
     public void gameOver()
