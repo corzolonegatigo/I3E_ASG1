@@ -25,7 +25,7 @@ public class doorBehaviour : MonoBehaviour
     void Start()
     {
         GameManager.Instance.doors.Add(gameObject);
-        rend = gameObject.transform.GetChild(0).GetComponent<Renderer>();
+        rend = gameObject.transform.Find("door").GetComponent<Renderer>();
         bounds = rend.bounds;
 
         InvokeRepeating(nameof(checkIfPlayerInRange), 0f, 1f);

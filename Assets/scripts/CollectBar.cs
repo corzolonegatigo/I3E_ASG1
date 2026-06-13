@@ -31,7 +31,7 @@ public class CollectBar : MonoBehaviour
         GameManager.Instance.score += 1;
         playOnCollect();
         
-        updateUI.showCollectItem("You found a gold bar!", " +1 score!!");
+        updateUI.showCollectItem("You found a gold bar!", " +1k in the bank!");
         gameObject.SetActive(false);
         
     

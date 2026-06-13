@@ -60,6 +60,11 @@ public class interactableInRange : MonoBehaviour
                         itemInView = "glass";  
                     
                     } 
+                    else
+                    {
+                        updateUI.showInteractiveOption("You need something strong to break this!");
+                        return null;
+                    }
                 }
 
                 
@@ -97,7 +102,7 @@ public class interactableInRange : MonoBehaviour
             else if (layer == 11)
             {
                 // with this amount of collectibles, nbd to write a condition for each. though, possible to combine card, rope, hammer scripts tgt.
-
+                print(objName);
                 if (objName.Contains("goldbar"))
                 {
                     CollectBar bar = hit.collider.GetComponent<CollectBar>();

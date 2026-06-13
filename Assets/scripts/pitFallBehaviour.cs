@@ -18,18 +18,23 @@ public class pitFallBehaviour : MonoBehaviour
 
         closedPos = new Vector3(bounds.center.x, bounds.center.y, bounds.center.z); 
 
-        openPos = new Vector3(bounds.center.x, bounds.center.y, bounds.center.z  - bounds.extents.x * 2);
+        openPos = new Vector3(bounds.center.x, bounds.center.y, bounds.center.z  - bounds.extents.z * 2);
 
-
+        StartCoroutine(MoveInOut());
         
     }
 
     IEnumerator MoveInOut()
     {
-        yield return new WaitForSeconds(4.0f);
-        yield return StartCoroutine(meshMovement(openPos, 0.5f));
-        yield return new WaitForSeconds(4.0f);
-        yield return StartCoroutine(meshMovement(closedPos, 0.5f));
+        while (true)
+        {
+                
+            yield return new WaitForSeconds(4.0f);
+            yield return StartCoroutine(meshMovement(openPos, 0.5f));
+            yield return new WaitForSeconds(4.0f);
+            yield return StartCoroutine(meshMovement(closedPos, 0.5f));
+            
+        }
 
 
     }
@@ -46,11 +51,13 @@ public class pitFallBehaviour : MonoBehaviour
             yield return null;
 
         }
+
+        gameObject.transform.position = endpoint; //in case of incomplete animation, force it to be correct
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        StartCoroutine(MoveInOut());
+        
     }
 }
