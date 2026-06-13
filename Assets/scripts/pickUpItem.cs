@@ -3,6 +3,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+/// <summary>
+/// 
+/// 
+/// following https://www.youtube.com/watch?v=2IhzPTS4av4
+/// BUT IF YOU ASK ME TO EXPLAIN THE CODE I CAN DO IT
+/// </summary>
 public class pickUpItem : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created

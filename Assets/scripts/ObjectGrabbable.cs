@@ -1,5 +1,14 @@
 using UnityEngine;
 
+
+/// <summary>
+/// 
+/// 
+/// following https://www.youtube.com/watch?v=2IhzPTS4av4
+/// BUT IF YOU ASK ME TO EXPLAIN THE CODE I CAN DO IT
+/// 
+/// ui code is completely seperate from tutorial
+/// </summary>
 public class ObjectGrabbable : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created

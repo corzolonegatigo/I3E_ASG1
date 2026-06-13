@@ -12,7 +12,7 @@ public class doorBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public Animator animator;
-    private bool doorOpen = false;
+    public bool doorOpen = false;
     private bool playerClose = false;
 
     private Renderer rend;
@@ -24,6 +24,7 @@ public class doorBehaviour : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.doors.Add(gameObject);
         rend = gameObject.transform.GetChild(0).GetComponent<Renderer>();
         bounds = rend.bounds;
 

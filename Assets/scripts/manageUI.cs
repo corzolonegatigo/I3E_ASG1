@@ -36,6 +36,8 @@ public class manageUI : MonoBehaviour
     private TMP_Text scoreText;
     private Transform interactiveBox;
     private Transform deathScreen;
+    private Transform winContainer;
+    
 
     void Start()
     {
@@ -51,6 +53,9 @@ public class manageUI : MonoBehaviour
 
         itemPickedUpBox = UI.transform.Find("ItemPickedUpPrompt");
         itemPickedUpBox.gameObject.SetActive(false);
+
+        winContainer = UI.transform.Find("WinScreen");
+        winContainer.gameObject.SetActive(false);
 
         // maybe theres a better way to do this but it just to reduce amount of things you have to assign
         scoreText = (UI.transform.Find("ScoreBox")).transform.Find("score").GetComponent<TMP_Text>();
@@ -137,7 +142,7 @@ public class manageUI : MonoBehaviour
     public void updateScore()
     {
         int score = GameManager.Instance.score;
-        scoreText.text = "Bars Collected: " + score.ToString();
+        scoreText.text = "Money Stolen: $" + score.ToString() + "K";
     }
 
     public void updateHealth()
@@ -180,6 +185,14 @@ public class manageUI : MonoBehaviour
         deathScreen.gameObject.SetActive(false);
     }
     
+    public void winScreen()
+    {
+        Transform results = winContainer.transform.Find("MoneyStolen");
+        TMP_Text resultText = results.GetComponent<TMP_Text>();
+
+        resultText.text = "Money Stolen: $" + GameManager.Instance.score.ToString() + "/$" + GameManager.Instance.scoreMax.ToString();
+        winContainer.gameObject.SetActive(true);
+    }
 
     
 

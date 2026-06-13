@@ -39,7 +39,7 @@ public class interactableInRange : MonoBehaviour
          // checks if hit by raycast ray
         Debug.DrawRay(transform.position, transform.forward, Color.green);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10 | 1<<11 | 1<<6, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10 | 1<<11 | 1<<6 | 1<<12, QueryTriggerInteraction.Ignore))
         {
 
             // get layer value. reads ray detecting both tgt and run layer specific code so that player cannot collect item and interact with a gameobject at the same time
@@ -79,7 +79,15 @@ public class interactableInRange : MonoBehaviour
                 }
                 doorBehaviour door = hit.collider.GetComponent<doorBehaviour>();
                 interactFunction = door;
-                updateUI.showInteractiveOption("Press (E) to open door");
+
+                if (door.doorOpen)
+                {
+                    updateUI.showInteractiveOption("Press (E) to close door");
+                } else
+                {
+                    updateUI.showInteractiveOption("Press (E) to open door");
+                }
+                
 
                 itemInView = "door";
             }
@@ -125,6 +133,20 @@ public class interactableInRange : MonoBehaviour
                     updateUI.showInteractiveOption("Click (F) to drop");
                 }
                 
+
+            } else if (layer == 12)
+            {
+
+                if (GameManager.Instance.scoreMax == GameManager.Instance.score)
+                {
+                    updateUI.showCollectItem("Escape?", "You have stolen all the gold here. Click (E) to leave."); // not an actual collectible. its the box with a title and description, and theres no need to create a third box for this
+
+                } else
+                {
+                    updateUI.showCollectItem("Escape?", "Theres still $" + (GameManager.Instance.scoreMax - GameManager.Instance.score).ToString() + "K worth of items to find! Click (E) to leave.");
+                }
+                
+                itemInView = "winzone";
 
             }
 

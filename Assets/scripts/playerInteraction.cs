@@ -35,6 +35,12 @@ public class playerInteraction : MonoBehaviour
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>();
+        InvokeRepeating(nameof(getInteractionItem), 0.0f, 0.25f);
+    }
+
+    void getInteractionItem()
+    {
+        itemObj = itemInRange.checkProximity();
     }
 
     private void OnEnable() // from ref
@@ -135,6 +141,9 @@ public class playerInteraction : MonoBehaviour
 
                  print(itemInRange.objName);
 
+            } else
+            {
+                
             }
             
             
@@ -156,9 +165,10 @@ public class playerInteraction : MonoBehaviour
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+
         // Update is called once per frame
     void Update()
     {
-        itemObj = itemInRange.checkProximity();
+        
     }
 }

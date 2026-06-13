@@ -15,7 +15,7 @@ public class glassBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-  
+        GameManager.Instance.glasses.Add(gameObject);
     }
 
     void removeGlassObj()
@@ -28,6 +28,11 @@ public class glassBehaviour : MonoBehaviour
         gameObject.SetActive(false);
 
         Invoke(nameof(removeGlassObj), 3.0f); // delay not in ref
+    }
+
+    public void resetGlass()
+    {
+        gameObject.SetActive(true);
     }
 
 

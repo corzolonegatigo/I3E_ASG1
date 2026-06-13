@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     private int scorePriv = 0;
 
+    public int scoreMax = 20;
+
     public float playerHealth = 100f;
     private float playerHealthPriv = 100f;
     public bool hasHammer = false;
@@ -39,6 +42,11 @@ public class GameManager : MonoBehaviour
     public manageUI updateUI;
 
     public List<GameObject> collectibles = new List<GameObject>();
+    public List<GameObject> doors = new List<GameObject>();
+    public List<GameObject> glasses = new List<GameObject>();
+
+    [SerializeField]
+    private Transform spawnPoint;
 
     // static globals
 
@@ -83,6 +91,18 @@ public class GameManager : MonoBehaviour
         {
             item.SetActive(true);
         }
+
+        foreach (GameObject glass in glasses)
+        {
+            glass.GetComponent<glassBehaviour>().resetGlass();
+        }
+
+        foreach (GameObject door in doors)
+        {
+            door.GetComponent<doorBehaviour>().animator.SetTrigger("closeDoor");
+        }
+
+        gameObject.transform.position = spawnPoint.position;
 
     }
 
