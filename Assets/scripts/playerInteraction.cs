@@ -22,6 +22,8 @@ public class playerInteraction : MonoBehaviour
     // reading inputs (outside of character controller)
     public InputActionReference interact;
     public InputActionReference restartGame;
+    public InputActionReference collectItem;
+
     public interactableInRange itemInRange;
 
 
@@ -38,16 +40,22 @@ public class playerInteraction : MonoBehaviour
     {
         interact.action.started += Interact;
         restartGame.action.started += restart;
+        collectItem.action.started += Collect;
         print("enabled");
     }
 
+    private void Collect(InputAction.CallbackContext obj)
+    {
+        print("collect");
+        
+    }
     private void Interact(InputAction.CallbackContext obj) // func itself from ref. code inside func is original
     {
         print("interacted");
 
         print(itemObj);
 
-        if (itemObj != null)
+        if ((itemObj != null) && (itemObj.layer == 10))
         {
             item = itemObj.name;
         

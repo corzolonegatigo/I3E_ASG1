@@ -1,6 +1,8 @@
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 /// <summary>
@@ -32,31 +34,79 @@ public class interactableInRange : MonoBehaviour
             // + transform.forward * 0.5f + Vector3.up * 1.7f
         ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-         // checks if hit by raycast ray  ,
+         // checks if hit by raycast ray
         Debug.DrawRay(transform.position, transform.forward, Color.green);
-        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10, QueryTriggerInteraction.Ignore))
+
+        if (Physics.Raycast(ray, out hit, Mathf.Pow(GameManager.Instance.DISTANCE_THRESHOLD, 2), 1<<10 + 1<<11, QueryTriggerInteraction.Ignore))
         {
-            if (GameManager.Instance.hasHammer == GameManager.Instance.hasHammer)
+
+            print(hit.collider.GetComponent<GameObject>().name);
+            
+
+            // get layer value. reads ray detecting both tgt and run layer specific code so that player cannot collect item and interact with a gameobject at the same time
+            int layer = hit.collider.GetComponent<GameObject>().layer;
+
+            objName = hit.collider.name;
+
+
+            if (layer == 10)
             {
-
-
-                objName = hit.collider.name;
-                
                 if (objName.Contains("glass"))
                 {
-
-                    glassBehaviour breakGlass = hit.collider.GetComponent<glassBehaviour>(); 
-                    interactFunction = breakGlass;
-                    updateUI.showInteractiveOption("Press (E) to break glass");
-                    itemInView = "glass";  
+                    if (GameManager.Instance.hasHammer)
+                    {
+                        glassBehaviour breakGlass = hit.collider.GetComponent<glassBehaviour>(); 
+                        interactFunction = breakGlass;
+                        updateUI.showInteractiveOption("Press (E) to break glass");
+                        itemInView = "glass";  
                     
-                } 
-                if (objName.Contains("door"))
-                {
-                    
+                    } 
                 }
 
                 
+            else if (objName.Contains("door"))
+            
+            {
+
+                string doorType = hit.collider.GetComponent<GameObject>().tag;
+
+                if (doorType != "OpenAccess")
+                {
+                    if (!GameManager.Instance.hasKeyCard)
+                    {
+                        updateUI.showInteractiveOption("You don't have permission to open this door");
+                        return null;
+                    }
+                }
+                doorBehaviour door = hit.collider.GetComponent<doorBehaviour>();
+                interactFunction = door;
+                updateUI.showInteractiveOption("Press (E) to open door");
+
+                itemInView = "door";
+            }
+            }
+            
+            // only two layers, thus can just run a binary if...else loop
+            else 
+            {
+                // with this amount of collectibles, nbd to write a condition for each. though, possible to combine card, rope, hammer scripts tgt.
+
+                if (objName.Contains("goldbar"))
+                {
+                    CollectBar bar = hit.collider.GetComponent<CollectBar>();
+                    interactFunction = bar;
+                    updateUI.showInteractiveOption("Click (LMB) to collect Gold Bar");
+
+                    itemInView = "goldbar";
+                }
+                else if (objName.Contains("medkit"))
+                {
+                    CollectMedkit medkit = hit.collider.GetComponent<CollectMedkit>();
+                    interactFunction = medkit;
+                    updateUI.showInteractiveOption("Click (LMB) to collect Medkit");
+
+                    itemInView = "medkit";
+                } 
             }
 
             return hit.collider.gameObject;

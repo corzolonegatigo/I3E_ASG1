@@ -916,6 +916,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CollectItem",
+                    "type": "Button",
+                    "id": "c934a84c-1a83-4d3c-9ae6-8bb095516c25",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -955,7 +964,7 @@
                 {
                     "name": "up",
                     "id": "aa33ce06-6bdf-4263-baec-92196378d1d4",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -966,7 +975,7 @@
                 {
                     "name": "down",
                     "id": "99c8f5b9-d2a7-47d7-bc7f-e05e2326bc05",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1004,6 +1013,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RestartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4fdd87e0-3f4b-4a81-a166-1e669fc606bd",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CollectItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

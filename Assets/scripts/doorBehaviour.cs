@@ -23,7 +23,7 @@ public class doorBehaviour : MonoBehaviour
 
     void Start()
     {
-        rend = gameObject.GetComponent<Renderer>();
+        rend = gameObject.transform.GetChild(0).GetComponent<Renderer>();
         bounds = rend.bounds;
 
         InvokeRepeating(nameof(checkIfPlayerInRange), 0f, 1f);
@@ -58,12 +58,14 @@ public class doorBehaviour : MonoBehaviour
     {
         animator.SetTrigger("openDoor");
         doorOpen = true;
+        print(gameObject.transform.rotation.y);
     }
 
     public void closeDoor()
     {
         animator.SetTrigger("closeDoor");
         doorOpen = false;
+        print(gameObject.transform.rotation.y);
     }
     // Update is called once per frame
     void Update()

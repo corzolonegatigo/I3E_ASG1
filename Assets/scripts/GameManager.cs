@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     // static globals
 
-    public float DISTANCE_THRESHOLD = 2.0f;
+    public float DISTANCE_THRESHOLD = 3.0f;
     public float DISTANCE_THRESHOLD_ROPE = 5.0f;
 
 

@@ -5177,13 +5177,13 @@ MonoBehaviour:
   score: 0
   playerHealth: 100
   hasHammer: 0
-  hasRope: 1
+  hasRope: 0
   hasKeyCard: 0
   gameOver: 0
   inventoryList: []
   updateUI: {fileID: 0}
   collectibles: []
-  DISTANCE_THRESHOLD: 2
+  DISTANCE_THRESHOLD: 3
   DISTANCE_THRESHOLD_ROPE: 5
 --- !u!4 &347363428
 Transform:
@@ -15289,9 +15289,10 @@ GameObject:
   - component: {fileID: 934807393}
   - component: {fileID: 934807392}
   - component: {fileID: 934807391}
+  - component: {fileID: 934807394}
   m_Layer: 10
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: OpenAccess
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15356,6 +15357,19 @@ Transform:
   - {fileID: 904919230}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934807394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934807390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f087b8bc5cc31e7408af91d974876938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::doorBehaviour
+  animator: {fileID: 934807392}
 --- !u!43 &955423978
 Mesh:
   m_ObjectHideFlags: 0
@@ -18974,6 +18988,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.67, y: 0.27, z: 0.69}
   m_Center: {x: 0.09, y: 0, z: 0}
+--- !u!114 &1191913052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191913046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57283948a1f22a42a5accd388612fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectUnique
+  collectSound: {fileID: 0}
+  rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!43 &1195114492
 Mesh:
   m_ObjectHideFlags: 0
@@ -26219,6 +26247,25 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1643482123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3000500155178763423, guid: 75f0998f704d04d408422d15e1794eb4, type: 3}
+  m_PrefabInstance: {fileID: 378431923721509601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1643482127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643482123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57283948a1f22a42a5accd388612fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectUnique
+  collectSound: {fileID: 0}
+  rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!43 &1660134022
 Mesh:
   m_ObjectHideFlags: 0
@@ -26931,6 +26978,25 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1683508040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3420521656258093659, guid: eddf566ff69a394489dbbcd03c206f07, type: 3}
+  m_PrefabInstance: {fileID: 5975613760312315062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1683508044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683508040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57283948a1f22a42a5accd388612fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectUnique
+  collectSound: {fileID: 0}
+  rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!43 &1697039461
 Mesh:
   m_ObjectHideFlags: 0
@@ -34034,10 +34100,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8939660260860817720, guid: 75f0998f704d04d408422d15e1794eb4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3000500155178763423, guid: 75f0998f704d04d408422d15e1794eb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1643482127}
   m_SourcePrefab: {fileID: 100100000, guid: 75f0998f704d04d408422d15e1794eb4, type: 3}
 --- !u!1001 &923285021799465242
 PrefabInstance:
@@ -35762,6 +35835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 5823199740967862452, guid: eddf566ff69a394489dbbcd03c206f07, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7219668196873533045, guid: eddf566ff69a394489dbbcd03c206f07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.379
@@ -35805,7 +35882,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3420521656258093659, guid: eddf566ff69a394489dbbcd03c206f07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1683508044}
   m_SourcePrefab: {fileID: 100100000, guid: eddf566ff69a394489dbbcd03c206f07, type: 3}
 --- !u!1001 &6104575521897885708
 PrefabInstance:
@@ -35973,6 +36053,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8027942658156876814, guid: f5a729e73e974fb4dbcbc81db32b5451, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35980,6 +36064,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4044989883762169971, guid: f5a729e73e974fb4dbcbc81db32b5451, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1191913049}
+    - targetCorrespondingSourceObject: {fileID: 4044989883762169971, guid: f5a729e73e974fb4dbcbc81db32b5451, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1191913052}
   m_SourcePrefab: {fileID: 100100000, guid: f5a729e73e974fb4dbcbc81db32b5451, type: 3}
 --- !u!1001 &6782772646467842084
 PrefabInstance:

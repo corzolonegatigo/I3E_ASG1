@@ -37,12 +37,12 @@ AnimationClip:
         outWeight: {x: 0, y: 0.1627108, z: 0.33333334}
       - serializedVersion: 3
         time: 0.75
-        value: {x: 0, y: -7.8189087, z: 0}
-        inSlope: {x: 0, y: 202.98103, z: 0}
-        outSlope: {x: 0, y: 202.98103, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 375.30902, z: 0}
+        outSlope: {x: 0, y: 375.30902, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.1492946, z: 0.33333334}
+        inWeight: {x: 0.33333334, y: 0.15690039, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -135,12 +135,12 @@ AnimationClip:
         outWeight: 0.1627108
       - serializedVersion: 3
         time: 0.75
-        value: -7.8189087
-        inSlope: 202.98103
-        outSlope: 202.98103
+        value: 0
+        inSlope: 375.30902
+        outSlope: 375.30902
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.1492946
+        inWeight: 0.15690039
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -210,11 +210,4 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.5
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

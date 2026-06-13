@@ -29,12 +29,6 @@ public class CollectCard : MonoBehaviour
         /// check if colliding w/ player character
         print(collision.gameObject.name);
 
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager not found in scene!");
-            return;
-        }
-
         if (collision.gameObject.name == "PlayerCapsule")
         {
             if (!GameManager.Instance.hasKeyCard) // prevent it adding the same string multiple times
