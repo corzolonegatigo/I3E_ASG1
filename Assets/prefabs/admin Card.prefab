@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 8144872070325984296}
   - component: {fileID: 3728266319645621004}
   m_Layer: 11
-  m_Name: adminCard
+  m_Name: admin Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

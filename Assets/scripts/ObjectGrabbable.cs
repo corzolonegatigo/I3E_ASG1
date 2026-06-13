@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
 
 
 /// <summary>
@@ -6,8 +7,10 @@ using UnityEngine;
 /// 
 /// following https://www.youtube.com/watch?v=2IhzPTS4av4
 /// BUT IF YOU ASK ME TO EXPLAIN THE CODE I CAN DO IT
+/// mesh collider stuff is by me because the item being held hits other items
 /// 
 /// ui code is completely seperate from tutorial
+/// 
 /// </summary>
 public class ObjectGrabbable : MonoBehaviour
 {
@@ -16,10 +19,12 @@ public class ObjectGrabbable : MonoBehaviour
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
     private manageUI updateUI;
+    private MeshCollider cldr;
 
     void Start()
     {
        rb = gameObject.GetComponent<Rigidbody>();
+       cldr = gameObject.GetComponent<MeshCollider>();
        updateUI = FindFirstObjectByType<manageUI>();
     }
 
@@ -28,6 +33,7 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = objectGrabPointTransform;
         rb.useGravity = false;
         rb.isKinematic = true;
+        cldr.enabled = false;
         gameObject.transform.localScale = gameObject.transform.localScale * 0.5f;
         updateUI.itemPickedUp(gameObject.tag.ToUpper());
 
@@ -40,6 +46,8 @@ public class ObjectGrabbable : MonoBehaviour
         gameObject.transform.localScale = gameObject.transform.localScale * 2.0f;
         rb.useGravity = true;
         rb.isKinematic = false;
+        cldr.enabled = true;
+        
         updateUI.hidePickItem();
 
         

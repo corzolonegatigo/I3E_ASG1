@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Net;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
+using StarterAssets;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.TextCore.Text;
 
 
 
@@ -14,9 +16,6 @@ using UnityEngine.Rendering;
 /// game manager concept from https://claude.ai/share/0439b4e5-ff7e-4510-b4d9-95653e49afc4
 /// ^^ basically the awake stuff, public static instance, and i also asked it how to change the values but thats like looking for documentation basically i just forgot how to do it (just saying in case you check the logs)
 /// 
-/// lists from https://learn.unity.com/tutorial/lists-and-dictionaries
-/// https://www.geeksforgeeks.org/c-sharp/list-class-in-c-sharp/ (g4g documuentation)
-/// ^^ this is just documentation :)
 /// </summary>
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +46,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Transform spawnPoint;
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private GameObject cam;
+    [SerializeField]
+    private GameObject playerFllw;
 
     // static globals
 
@@ -102,7 +107,16 @@ public class GameManager : MonoBehaviour
             door.GetComponent<doorBehaviour>().animator.SetTrigger("closeDoor");
         }
 
-        gameObject.transform.position = spawnPoint.position;
+
+        // so annoying omg im gonna actually crash out
+        player.GetComponent<FirstPersonController>().enabled = false;
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = spawnPoint.position;
+        playerFllw.transform.position = spawnPoint.position + new Vector3(0f, 1.375f, 0f);
+        cam.transform.position = spawnPoint.position + new Vector3(0f, 1.375f, 0f);
+        print(player.name);
+        player.GetComponent<FirstPersonController>().enabled = true;
+        player.GetComponent<CharacterController>().enabled = true;
 
     }
 

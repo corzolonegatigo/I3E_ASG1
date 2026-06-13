@@ -141,9 +141,9 @@ public class playerInteraction : MonoBehaviour
 
                  print(itemInRange.objName);
 
-            } else
+            } else if (itemObj.layer == 12)
             {
-                
+                updateUI.winScreen();
             }
             
             
