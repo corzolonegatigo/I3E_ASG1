@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AdaptivePerformance;
 
@@ -47,6 +48,8 @@ public class ObjectGrabbable : MonoBehaviour
         gameObject.transform.localScale = gameObject.transform.localScale * 0.5f;
         updateUI.itemPickedUp(gameObject.tag.ToUpper());
 
+        Physics.IgnoreLayerCollision(6, 3, true);
+
         if(pickUpSound != null)
         {
             AudioSource.PlayClipAtPoint(pickUpSound, transform.position);
@@ -66,6 +69,8 @@ public class ObjectGrabbable : MonoBehaviour
         rb.useGravity = true;
         rb.isKinematic = false;
         cldr.enabled = true;
+        
+        Physics.IgnoreLayerCollision(6, 3, false);
         
         updateUI.hidePickItem();
 

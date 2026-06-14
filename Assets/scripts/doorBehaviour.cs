@@ -32,7 +32,7 @@ public class DoorBehaviour : MonoBehaviour
         rend = gameObject.transform.Find("door").GetComponent<Renderer>();
         bounds = rend.bounds;
 
-        InvokeRepeating(nameof(checkIfPlayerInRange), 0f, 1f);
+        InvokeRepeating(nameof(checkIfPlayerInRange), 0f, 0.1f);
     }
 
     private void playOnUse()
@@ -50,10 +50,10 @@ public class DoorBehaviour : MonoBehaviour
     void checkIfPlayerInRange()
     {
 
-        bool inRange = false;
+        bool playerClose = false;
         bounds = rend.bounds;
         origin = new Vector3(bounds.center.x, bounds.center.y, bounds.center.z);
-        extents = new Vector3(bounds.extents.x * 8, bounds.extents.y, bounds.extents.z * 8);
+        extents = new Vector3(bounds.extents.x * 8, bounds.extents.y*4, bounds.extents.z * 8);
 
         Collider[] itemsTouching = Physics.OverlapBox(origin, extents*5, Quaternion.identity, 1<<3, QueryTriggerInteraction.Collide);
         foreach (Collider item in itemsTouching)
@@ -61,14 +61,16 @@ public class DoorBehaviour : MonoBehaviour
             // just verify is it is the player in range
             if (item.name.Contains("Player"))
             {
-                inRange = true;
+                playerClose = true;
             }
         }
+
+        print(playerClose);
 
         if (doorOpen)
         {
             
-            if (!inRange)
+            if (!playerClose)
             {
                 animator.SetTrigger("closeDoor");
             doorOpen = false;
@@ -89,12 +91,12 @@ public class DoorBehaviour : MonoBehaviour
 
         if (doorOpen)
         {
+            animator.ResetTrigger("closeDoor");
             animator.SetTrigger("openDoor");
             
         } else
         {
             animator.SetTrigger("closeDoor");
-            
         }
 
         playOnUse();
@@ -104,6 +106,5 @@ public class DoorBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
