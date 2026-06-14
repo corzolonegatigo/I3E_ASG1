@@ -9,10 +9,15 @@ On windows, plug in before running, or the program itself might be prone to lag.
 
 # How to play
 **WASD** to move,
+
 **Space** to Jump,
+
 **F** to pick up blocks,
+
 **E** to interact with items in the world,
+
 **LMB** to pick up items,
+
 **L SHIFT** to sprint.
 
 # Limitations/Bugs
@@ -26,12 +31,14 @@ Due to hazard code running every 0.5s, player has invulnerability frames which t
 
 # Solutions
 **To Enter Admin Building**
+
 First, pick up a block and place it next to the 2 blocks stacked on each other. Alternatively, push the second block on the stack so it balances between the platform and the first block.
 Next, pick up another block and place it on the second platform, close to the door. Jump over to the third platform and grab those two block to create a stack of 3 blocks.
 Jump to the top of this stack from the third platform.
 Enter the room.
 
 **To Cross Lava Pool**
+
 First, get the hammer object.
 Return to the start of the pitfall lane, where the giant glass wall is, with the screen that says "BREAK In Case of Emergency".
 Return to the lava pool, look across towards a hook on the opposite side. This is the rope connection point.
@@ -39,10 +46,12 @@ Click `E` and attach the rope to the connection point.
 Cross the lava pool by using the rope.
 
 **To Reach the Safe, Final Room**
+
 Stack blocks until you have a 1 tall stack and a 2 tall stack.
 Use these stacks to climb up and jump to the platform where the safe is at.
 
 **Reach Roof of Admin Building**
+
 Detach the rope from the rope connection point by the lava pool.
 Stack blocks until you reach the top of the black platforms near the hole in the wall.
 Attach the rope to the rope connection point on the Admin Building.
