@@ -69,7 +69,7 @@ public class CollectUnique : MonoBehaviour
             updateUI.showCollectItem("You found a Rope!", "'It goes round and round, round and round.'");
         } else
         {
-            print("attached to "+ gameObject.name + "which is not in the list of uniquye collectibles");
+
         }
         
 

@@ -24,7 +24,7 @@ public class ConnectRope : MonoBehaviour
     public void toggleRopePresence()
     {
 
-        print("toggline rope" + ropeAttached);
+    
 
         if (!ropeAttached)
         {

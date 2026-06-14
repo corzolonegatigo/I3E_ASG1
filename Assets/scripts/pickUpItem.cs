@@ -32,7 +32,6 @@ public class PickUpItem : MonoBehaviour
     void Start()
     {
         positionSetWhenGrabbed = gameObject.transform.position + new Vector3(0.0f, 0.0f, 1.0f);
-        print("posx"  + positionSetWhenGrabbed.x + "posy" + positionSetWhenGrabbed.y + "posz" + positionSetWhenGrabbed.z);
 
 
     }
@@ -44,7 +43,7 @@ public class PickUpItem : MonoBehaviour
 
     private void pickUpDown(InputAction.CallbackContext obj)
     {
-        print("pickup");
+
         
         if (objectGrabbable == null)
         {
@@ -66,7 +65,7 @@ public class PickUpItem : MonoBehaviour
             objectGrabbable = null;
         }
 
-        print(objectGrabbable);
+
         
         
     }

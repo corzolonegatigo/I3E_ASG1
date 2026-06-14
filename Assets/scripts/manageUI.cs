@@ -95,7 +95,7 @@ public class ManageUI : MonoBehaviour
 
         List<string> inventory = GameManager.Instance.inventoryList; 
         int invLength = inventory.Count;
-        print(invLength);
+
 
         // add inv header
         GameObject inventoryHeader = Instantiate(itemPrefab, inventoryContainer);
@@ -103,7 +103,7 @@ public class ManageUI : MonoBehaviour
         
         for (int i = 0; i < invLength; i++)
         {
-            print(i);
+
             
             GameObject slot = Instantiate(itemPrefab, inventoryContainer);
             slot.GetComponent<TMP_Text>().text = inventory[i];
@@ -202,9 +202,6 @@ public class ManageUI : MonoBehaviour
 
         
 
-        print(width + "hp w");
-        print(height);
-        print(health/100.0f);
 
         healthBar.sizeDelta = new Vector2( width , height );
 

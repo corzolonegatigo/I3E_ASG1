@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        print("GameManager Awake called on: " + gameObject.name);
+       
 
         
         if (Instance != null && Instance != this)
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = spawnPoint.position;
         playerFllw.transform.position = spawnPoint.position + new Vector3(0f, 1.375f, 0f);
         cam.transform.position = spawnPoint.position + new Vector3(0f, 1.375f, 0f);
-        print(player.name);
+
         player.GetComponent<FirstPersonController>().enabled = true;
         player.GetComponent<CharacterController>().enabled = true;
 

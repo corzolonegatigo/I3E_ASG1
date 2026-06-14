@@ -69,9 +69,6 @@ public class SetLazerShape : MonoBehaviour
 
         // angle of rotation on 1 axis = tan(opposite/adjacent)
         // rotation is split up so its easier to read
-        print("xd"+ x_dist);
-        print("yd"+ y_dist);
-        print("zd"+ z_dist);
 
         rotate_x = MathF.Tan(x_dist/y_dist) * Mathf.Rad2Deg;
         rotate_y = MathF.Tan(y_dist/x_dist) * Mathf.Rad2Deg;
@@ -82,9 +79,6 @@ public class SetLazerShape : MonoBehaviour
         rotate_y = float.IsNaN(rotate_y) ? 0f : rotate_y;
         rotate_z = float.IsNaN(rotate_z) ? 0f : rotate_z;
 
-        print("rx" + rotate_x.ToString());
-        print("ry" + rotate_y.ToString());
-        print("rz" + rotate_z.ToString());
 
 
 

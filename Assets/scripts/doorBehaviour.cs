@@ -98,10 +98,7 @@ public class DoorBehaviour : MonoBehaviour
         }
 
         playOnUse();
-        print("door state" + doorOpen + "running");
-        
-        
-        print(gameObject.transform.rotation.y);
+
     }
 
     // Update is called once per frame

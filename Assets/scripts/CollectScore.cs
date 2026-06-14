@@ -53,6 +53,9 @@ public class CollectScore : MonoBehaviour
             updateUI.showCollectItem("You found a metal safe!", " +10k in the bank!");
             playOnCollect(safeSound);
             
+        } else
+        {
+
         }
         
         gameObject.SetActive(false);

@@ -13,7 +13,7 @@ using UnityEngine.UI;
 /// basic raycasting fundamentals + the bitwise layer mask from https://www.youtube.com/watch?v=B34iq4O5ZYI
 /// ^^ this is like looking at documentation right
 /// </summary>
-public class interactableInRange : MonoBehaviour
+public class InteractableInRange : MonoBehaviour
 {
    
     Ray ray;
@@ -47,6 +47,7 @@ public class interactableInRange : MonoBehaviour
 
             objName = hit.collider.name;
             
+    
 
             if (layer == 10)
             {
@@ -102,7 +103,7 @@ public class interactableInRange : MonoBehaviour
             else if (layer == 11)
             {
                 // with this amount of collectibles, nbd to write a condition for each. though, possible to combine card, rope, hammer scripts tgt.
-                print(objName);
+                
                 if (objName.Contains("goldbar"))
                 {
                     CollectScore bar = hit.collider.GetComponent<CollectScore>();
@@ -173,10 +174,9 @@ public class interactableInRange : MonoBehaviour
             
             
             itemInView = "ropeConnection";
-            print(hit.collider.gameObject);
 
             ConnectRope ropeConnectionScript = hit.collider.gameObject.GetComponent<ConnectRope>();
-            print(ropeConnectionScript);
+
 
             if (GameManager.Instance.hasRope == true)
             {
