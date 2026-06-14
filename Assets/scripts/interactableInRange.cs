@@ -24,7 +24,7 @@ public class InteractableInRange : MonoBehaviour
     private Component interactFunction;
     public ManageUI updateUI;
 
-    private PickUpItem item;
+    private ObjectGrabbable item;
 
     void Start()
     {
@@ -140,7 +140,8 @@ public class InteractableInRange : MonoBehaviour
             } else if (layer == 6) // could use a if...elif...else but this makes it more readable imo (slower though)
             {
                 string tag = hit.collider.gameObject.tag;
-                if (item == null)
+                item = hit.collider.gameObject.GetComponent<ObjectGrabbable>();
+                if (!item.grabbed)
                 {
                     updateUI.showInteractiveOption("Click (F) to pick up this " + tag);
                 } else

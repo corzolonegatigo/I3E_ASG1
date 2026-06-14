@@ -15,6 +15,8 @@ using UnityEngine;
 public class GlassBehaviour : MonoBehaviour
 {
     public GameObject brokenGlass;
+    [SerializeField]
+    private AudioClip glassBreak;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +34,18 @@ public class GlassBehaviour : MonoBehaviour
         brokenGlass.SetActive(true);
         gameObject.SetActive(false);
 
+        if(glassBreak != null)
+        {
+            AudioSource.PlayClipAtPoint(glassBreak, transform.position);
+        }
+        else
+        {
+            print("no valid sound");
+        }
+
         Invoke(nameof(removeGlassObj), 3.0f); // delay not in ref
+
+        
     }
 
     public void resetGlass()

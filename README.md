@@ -21,6 +21,8 @@ Even when collision between the player layer and the movable layer is disabled, 
 
 Multiple prompts can display over each other at the same time.
 
+Due to hazard code running every 0.5s, player has invulnerability frames which they can use to phase through hazard zones
+
 
 # Solutions
 **To Enter Admin Building**
@@ -57,6 +59,7 @@ Sound Effects:
 - https://pixabay.com/sound-effects/film-special-effects-cashier-quotka-chingquot-sound-effect-129698/
 - https://pixabay.com/sound-effects/film-special-effects-death2-340040/
 - https://pixabay.com/sound-effects/household-clothes-drop-2-40202/
+- https://pixabay.com/sound-effects/household-glass-breaking-504033/
 - Sample Audio Pack, from the I3E Politemall
 
 All other assets are custom created.

@@ -31,11 +31,14 @@ public class ObjectGrabbable : MonoBehaviour
     [SerializeField]
     private AudioClip dropSound;
 
+    public bool grabbed;
+
     void Start()
     {
        rb = gameObject.GetComponent<Rigidbody>();
        cldr = gameObject.GetComponent<MeshCollider>();
        updateUI = FindFirstObjectByType<ManageUI>();
+       grabbed = false;
     }
 
     public void Grab(Transform objectGrabPointTransform)
@@ -46,6 +49,8 @@ public class ObjectGrabbable : MonoBehaviour
         cldr.enabled = false;
         gameObject.transform.localScale = gameObject.transform.localScale * 0.5f;
         updateUI.itemPickedUp(gameObject.tag.ToUpper());
+
+        grabbed = true;
 
 
         if(pickUpSound != null)
@@ -68,6 +73,8 @@ public class ObjectGrabbable : MonoBehaviour
         rb.isKinematic = false;
         cldr.enabled = true;
         
+
+        grabbed = false;
         updateUI.hidePickItem();
 
         if(dropSound != null)

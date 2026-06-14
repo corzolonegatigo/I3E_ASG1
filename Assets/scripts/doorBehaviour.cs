@@ -65,7 +65,6 @@ public class DoorBehaviour : MonoBehaviour
             }
         }
 
-        print(playerClose);
 
         if (doorOpen)
         {
