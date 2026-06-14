@@ -82,7 +82,7 @@ public class HandleHazards : MonoBehaviour
                 damage = 2.0f;
                 playOnDamage(damageSound);
             }
-
+            
             GameManager.Instance.playerHealth = MathF.Max(GameManager.Instance.playerHealth - damage, 0.0f);
         }
 
@@ -96,6 +96,6 @@ public class HandleHazards : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

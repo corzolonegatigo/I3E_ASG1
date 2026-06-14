@@ -189,7 +189,13 @@ public class ManageUI : MonoBehaviour
         if (score == GameManager.Instance.scoreMax)
         {
             allScoreGained.gameObject.SetActive(true);
+            Invoke(nameof(hideAllScoreGained), 3.0f);
         }
+    }
+
+    void hideAllScoreGained()
+    {
+        allScoreGained.gameObject.SetActive(false);
     }
 
     public void updateHealth()

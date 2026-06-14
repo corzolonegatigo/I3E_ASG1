@@ -71,6 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectGrabbable
   pickUpSound: {fileID: 8300000, guid: 1a4078c8bb19d464fb88616edf5ddffb, type: 3}
   dropSound: {fileID: 8300000, guid: 6814ea7411308d54c946c1aede9a475d, type: 3}
+  player: {fileID: 0}
+  playerCap: {fileID: 0}
 --- !u!54 &8852866117576290283
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -210,6 +212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectGrabbable
   pickUpSound: {fileID: 0}
   dropSound: {fileID: 0}
+  player: {fileID: 0}
+  playerCap: {fileID: 0}
 --- !u!65 &4285702477535217455
 BoxCollider:
   m_ObjectHideFlags: 0

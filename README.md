@@ -4,8 +4,8 @@ Module Group: IM02
 
 # Supported Platforms
 This game only supports keyboard and mouse.
-It can run on any desktop or laptop with unity.
-On windows, plug in before running, or the program itself might be prone to lag
+It can run on any desktop or laptop with unity, and should be run using an 16x9 aspect ratio.
+On windows, plug in before running, or the program itself might be prone to lag.
 
 # How to play
 **WASD** to move,
@@ -18,6 +18,8 @@ On windows, plug in before running, or the program itself might be prone to lag
 # Limitations/Bugs
 When holding a block, jumping on the block being held and landind directly over it will launch you infinitely into the air.
 Even when collision between the player layer and the movable layer is disabled, you can still fly using this bug.
+
+Multiple prompts can display over each other at the same time.
 
 
 # Solutions
