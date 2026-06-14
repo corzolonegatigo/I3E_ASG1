@@ -6,10 +6,13 @@ using UnityEngine;
 
 
 /// <summary>
-/// 
+/// author: zac
+/// date: 6/12
+/// description: generates a lazer between two lazer point gameObjects
 /// 
 /// done with the help of https://claude.ai/share/95bcd527-2290-4297-9efa-158c750cffcb
 /// mesh creation itself is ai genned, but everything around it is hand-typed
+/// again i can explain it if needed
 /// </summary>
 /// 
 /// 
@@ -17,7 +20,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 
 
-public class lazerGeneration : MonoBehaviour
+public class LazerGeneration : MonoBehaviour
 {
 
 
@@ -76,7 +79,7 @@ public class lazerGeneration : MonoBehaviour
              : Vector3.forward;
 
 
-        if (parentT.rotation.y == 0)
+        if (parentT.rotation.y == 0) // variants depending on rotation is by me
         {
             worldVerts = new Vector3[8]
             {

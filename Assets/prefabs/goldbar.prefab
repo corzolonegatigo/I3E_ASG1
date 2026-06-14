@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectBar
   collectSound: {fileID: 0}
   rotationSpeed: {x: 0, y: 60, z: 0}
+  barSound: {fileID: 8300000, guid: bbd11aea4a909ed43a5ee03b7cc24d96, type: 3}
+  safeSound: {fileID: 8300000, guid: 664ef2f63a036ac46acc75dc12bcf09f, type: 3}
 --- !u!65 &5351458027500006908
 BoxCollider:
   m_ObjectHideFlags: 0

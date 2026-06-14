@@ -4,10 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
+/// 
+/// author: zac
+/// date: 6/8
+/// description: manages glass behaviour (a la breaking)
+/// 
 /// swap to broken glass mesh taken from https://www.youtube.com/watch?v=91JruzwZTHQ
 /// 
 /// </summary>
-public class glassBehaviour : MonoBehaviour
+public class GlassBehaviour : MonoBehaviour
 {
     public GameObject brokenGlass;
     

@@ -10,10 +10,11 @@ using UnityEngine.ProBuilder.Shapes;
 
 /// <summary>
 ///  
+/// author: zac
+/// date: 6/11
+/// description: handles player input with regard to interactive objects within the scene
 /// 
-/// 
-/// 
-/// followed this (https://www.youtube.com/watch?v=ONlMEZs9Rgw) tutorial as a rough guide
+/// followed this (https://www.youtube.com/watch?v=ONlMEZs9Rgw) tutorial as a rough guide for detecting inputs
 /// this would be so much easier if i just combined this and interactable in range together but that seems like bad practise or something
 /// </summary>
 public class playerInteraction : MonoBehaviour
@@ -27,14 +28,18 @@ public class playerInteraction : MonoBehaviour
 
     public interactableInRange itemInRange;
 
+    [SerializeField]
+    private AudioClip winSound;
+   
+
 
 
     private string item;
     private GameObject itemObj;
-    private manageUI updateUI;
+    private ManageUI updateUI;
     void Start()
     {
-        updateUI = FindFirstObjectByType<manageUI>();
+        updateUI = FindFirstObjectByType<ManageUI>();
         InvokeRepeating(nameof(getInteractionItem), 0.0f, 0.25f);
     }
 
@@ -60,7 +65,7 @@ public class playerInteraction : MonoBehaviour
             if (itemObj.layer == 11)
             {
                 item = itemObj.name;
-                
+
                 if (item.Contains("goldbar") || item.Contains("Safe"))
                 {
                     CollectScore score = itemObj.GetComponent<CollectScore>();
@@ -109,7 +114,7 @@ public class playerInteraction : MonoBehaviour
                 if (item == "glass")
                 {
                     if (GameManager.Instance.hasHammer) {
-                        glassBehaviour glassScript = itemObj.GetComponent<glassBehaviour>();
+                        GlassBehaviour glassScript = itemObj.GetComponent<GlassBehaviour>();
                         glassScript.breakGlass();
                         print("break glass");
 
@@ -120,7 +125,7 @@ public class playerInteraction : MonoBehaviour
                 else if (item.Contains("Door"))
                 {
                     print("interacting with door");
-                    doorBehaviour doorScript = itemObj.GetComponent<doorBehaviour>();
+                    DoorBehaviour doorScript = itemObj.GetComponent<DoorBehaviour>();
                     doorScript.openDoor();
 
                     updateUI.hideInteractiveOption();
@@ -133,13 +138,22 @@ public class playerInteraction : MonoBehaviour
             {
                 updateUI.winScreen();
 
+                if(winSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(winSound, transform.position);
+                }
+                else
+                {
+                    print("no valid sound");
+                }
+
 
             } else if (itemObj.layer == 9)
                 {
 
                     print("hasrope");
-                    connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
-                    connectRopeScript.toggleRopePresence();
+                    ConnectRope ConnectRopeScript = itemObj.GetComponent<ConnectRope>();
+                    ConnectRopeScript.toggleRopePresence();
                     
                 }
             
@@ -159,7 +173,7 @@ public class playerInteraction : MonoBehaviour
             GameManager.Instance.Reset();
             updateUI.gameRestart();
 
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
         }
     }
 

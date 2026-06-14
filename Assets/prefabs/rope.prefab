@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57283948a1f22a42a5accd388612fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectUnique
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: 46bef0315df617b4b8feb8e9bf059bdc, type: 3}
   rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!1001 &79291150227638709
 PrefabInstance:

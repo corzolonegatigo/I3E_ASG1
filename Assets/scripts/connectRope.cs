@@ -3,11 +3,11 @@ using UnityEngine;
 
 
 /// <summary>
-/// 
-/// 
-/// 
+/// author: zac
+/// date: 6/11
+/// description: handles rope connection point functionality
 /// </summary>
-public class connectRope : MonoBehaviour
+public class ConnectRope : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 

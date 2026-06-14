@@ -479,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::doorBehaviour
   animator: {fileID: 8673209815570130692}
   doorOpen: 0
+  openCloseSound: {fileID: 8300000, guid: cfaddc9ab8e6dcd4ea6640294cb4e19e, type: 3}
 --- !u!65 &9155735688346663163
 BoxCollider:
   m_ObjectHideFlags: 0

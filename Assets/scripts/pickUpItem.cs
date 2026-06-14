@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 
 
 /// <summary>
-/// 
-/// 
+/// author: zac
+/// date: 6/13
+/// description: handles player side interaction with objects that can be picked up
 /// following https://www.youtube.com/watch?v=2IhzPTS4av4
 /// BUT IF YOU ASK ME TO EXPLAIN THE CODE I CAN DO IT
 /// </summary>
-public class pickUpItem : MonoBehaviour
+public class PickUpItem : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private Vector3 positionSetWhenGrabbed;

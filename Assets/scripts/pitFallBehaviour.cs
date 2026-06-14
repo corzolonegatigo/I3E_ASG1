@@ -2,7 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class pitFallBehaviour : MonoBehaviour
+
+/// <summary>
+/// author: zac
+/// date: 6/12
+/// description: handles the rhythmic opening and closing of the pitfall cover
+/// </summary>
+public class PitFallBehaviour : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 

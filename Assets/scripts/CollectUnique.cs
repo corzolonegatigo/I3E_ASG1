@@ -1,14 +1,21 @@
 using UnityEngine;
 
+
+/// <summary>
+/// 
+/// author: zac
+/// date: 6/13
+/// description: manages behaviour of unique collectibles and how the player interacts with them
+/// </summary>
 public class CollectUnique : MonoBehaviour
 {
     public AudioClip collectSound;
     public Vector3 rotationSpeed = new Vector3(0f, 60f, 0f);
-    private manageUI updateUI;
+    private ManageUI updateUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        updateUI = FindFirstObjectByType<manageUI>();
+        updateUI = FindFirstObjectByType<ManageUI>();
         GameManager.Instance.collectibles.Add(gameObject);
     }
 

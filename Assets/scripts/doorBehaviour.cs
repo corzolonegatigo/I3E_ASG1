@@ -3,11 +3,12 @@ using UnityEngine.ProBuilder.Shapes;
 
 
 /// <summary>
-/// 
-/// 
+/// author: zac
+/// date: 6/13
+/// description: handles door functionality (open, close) and closes automatically pass a certain distance using RAYCASTING
 /// overlap box documentation: https://docs.unity3d.com/6000.4/Documentation/ScriptReference/Physics.OverlapBox.html
 /// </summary>
-public class doorBehaviour : MonoBehaviour
+public class DoorBehaviour : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -21,6 +22,9 @@ public class doorBehaviour : MonoBehaviour
     private Vector3 origin;
     private Vector3 extents;
 
+    [SerializeField]
+    private AudioClip openCloseSound;
+
 
     void Start()
     {
@@ -29,6 +33,18 @@ public class doorBehaviour : MonoBehaviour
         bounds = rend.bounds;
 
         InvokeRepeating(nameof(checkIfPlayerInRange), 0f, 1f);
+    }
+
+    private void playOnUse()
+    {
+        if(openCloseSound != null)
+            {
+                AudioSource.PlayClipAtPoint(openCloseSound, transform.position);
+            }
+            else
+            {
+                print("no valid sound");
+            }
     }
 
     void checkIfPlayerInRange()
@@ -80,6 +96,8 @@ public class doorBehaviour : MonoBehaviour
             animator.SetTrigger("closeDoor");
             
         }
+
+        playOnUse();
         print("door state" + doorOpen + "running");
         
         

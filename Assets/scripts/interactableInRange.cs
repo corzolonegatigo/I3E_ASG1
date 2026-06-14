@@ -7,9 +7,11 @@ using UnityEngine.UI;
 
 /// <summary>
 /// 
-/// 
+/// author: zac
+/// date: 6/12
+/// description: handles majority of raycasting between user camera and interactive objects (collectibles, winzone, doors, glass) using RAYCASTING
 /// basic raycasting fundamentals + the bitwise layer mask from https://www.youtube.com/watch?v=B34iq4O5ZYI
-/// this is like looking at documentation right
+/// ^^ this is like looking at documentation right
 /// </summary>
 public class interactableInRange : MonoBehaviour
 {
@@ -20,13 +22,13 @@ public class interactableInRange : MonoBehaviour
 
     public string objName;
     private Component interactFunction;
-    public manageUI updateUI;
+    public ManageUI updateUI;
 
-    private pickUpItem item;
+    private PickUpItem item;
 
     void Start()
     {
-        updateUI = FindFirstObjectByType<manageUI>();
+        updateUI = FindFirstObjectByType<ManageUI>();
     }
 
     public GameObject checkProximity()
@@ -52,7 +54,7 @@ public class interactableInRange : MonoBehaviour
                 {
                     if (GameManager.Instance.hasHammer)
                     {
-                        glassBehaviour breakGlass = hit.collider.GetComponent<glassBehaviour>(); 
+                        GlassBehaviour breakGlass = hit.collider.GetComponent<GlassBehaviour>(); 
                         interactFunction = breakGlass;
                         updateUI.showInteractiveOption("Press (E) to break glass");
                         itemInView = "glass";  
@@ -80,7 +82,7 @@ public class interactableInRange : MonoBehaviour
                         return null;
                     }
                 }
-                doorBehaviour door = hit.collider.GetComponent<doorBehaviour>();
+                DoorBehaviour door = hit.collider.GetComponent<DoorBehaviour>();
                 interactFunction = door;
 
                 if (door.doorOpen)
@@ -151,11 +153,11 @@ public class interactableInRange : MonoBehaviour
 
                 if (GameManager.Instance.scoreMax == GameManager.Instance.score)
                 {
-                    updateUI.showCollectItem("Escape?", "You have stolen all the gold here. Click (E) to leave."); // not an actual collectible. its the box with a title and description, and theres no need to create a third box for this
+                    updateUI.showWinPrompt("Escape?", "You have stolen all the gold here. Click (E) to leave."); // not an actual collectible. its the box with a title and description, and theres no need to create a third box for this
 
                 } else
                 {
-                    updateUI.showCollectItem("Escape?", "Theres still $" + (GameManager.Instance.scoreMax - GameManager.Instance.score).ToString() + "K worth of items to find! Click (E) to leave.");
+                    updateUI.showWinPrompt("Escape?", "Theres still $" + (GameManager.Instance.scoreMax - GameManager.Instance.score).ToString() + "K worth of items to find! Click (E) to leave.");
                 }
                 
                 itemInView = "winzone";
@@ -173,7 +175,7 @@ public class interactableInRange : MonoBehaviour
             itemInView = "ropeConnection";
             print(hit.collider.gameObject);
 
-            connectRope ropeConnectionScript = hit.collider.gameObject.GetComponent<connectRope>();
+            ConnectRope ropeConnectionScript = hit.collider.gameObject.GetComponent<ConnectRope>();
             print(ropeConnectionScript);
 
             if (GameManager.Instance.hasRope == true)
@@ -193,6 +195,7 @@ public class interactableInRange : MonoBehaviour
         }
 
         updateUI.hideInteractiveOption();
+        updateUI.hideWinPrompt();
         return null;
     }
 

@@ -12,10 +12,13 @@ using UnityEngine.TextCore.Text;
 
 
 /// <summary>
+/// author: zac
+/// date: 6/9
+/// description: manages game state and global vars. calls for updates for dynamic ui elements
 /// 
 /// game manager concept from https://claude.ai/share/0439b4e5-ff7e-4510-b4d9-95653e49afc4
 /// ^^ basically the awake stuff, public static instance, and i also asked it how to change the values but thats like looking for documentation basically i just forgot how to do it (just saying in case you check the logs)
-/// 
+/// ^^ everything else is by me
 /// </summary>
 public class GameManager : MonoBehaviour
 {
@@ -25,7 +28,7 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     private int scorePriv = 0;
 
-    public int scoreMax = 20;
+    public int scoreMax = 30;
 
     public float playerHealth = 100f;
     private float playerHealthPriv = 100f;
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
     public List<string> inventoryList = new List<string>(); // no need to change capacity (i dont have that many items lmao)
     private List<string> inventoryListPriv = new List<string>();
 
-    public manageUI updateUI;
+    public ManageUI updateUI;
 
     public List<GameObject> collectibles = new List<GameObject>();
     public List<GameObject> doors = new List<GameObject>();
@@ -52,6 +55,8 @@ public class GameManager : MonoBehaviour
     private GameObject cam;
     [SerializeField]
     private GameObject playerFllw;
+     [SerializeField]
+    private AudioClip deathSound;
 
     // static globals
 
@@ -79,8 +84,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        updateUI = FindFirstObjectByType<manageUI>(); // i would put this in awake but im scared it doesnt work
-        //Reset();
+        updateUI = FindFirstObjectByType<ManageUI>(); // i would put this in awake but im scared it doesnt work
+        Reset();
     }
 
     public void Reset()
@@ -100,12 +105,12 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject glass in glasses)
         {
-            glass.GetComponent<glassBehaviour>().resetGlass();
+            glass.GetComponent<GlassBehaviour>().resetGlass();
         }
 
         foreach (GameObject door in doors)
         {
-            door.GetComponent<doorBehaviour>().animator.SetTrigger("closeDoor");
+            door.GetComponent<DoorBehaviour>().animator.SetTrigger("closeDoor");
         }
 
 
@@ -157,6 +162,15 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             updateUI.gameOver();
+
+            if(deathSound != null)
+            {
+                AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            }
+            else
+            {
+                print("no valid sound");
+            }
 
         }
     }

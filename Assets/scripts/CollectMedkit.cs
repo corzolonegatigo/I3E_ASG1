@@ -6,11 +6,11 @@ public class CollectMedkit : MonoBehaviour
    public AudioClip collectSound;
     public Vector3 rotationSpeed = new Vector3(0f, 60f, 0f);
 
-    private manageUI updateUI;
+    private ManageUI updateUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        updateUI = FindFirstObjectByType<manageUI>();
+        updateUI = FindFirstObjectByType<ManageUI>();
         GameManager.Instance.collectibles.Add(gameObject);
     }
 

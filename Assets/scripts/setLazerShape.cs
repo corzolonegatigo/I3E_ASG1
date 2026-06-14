@@ -8,13 +8,13 @@ using UnityEngine;
 
 /// <summary>
 /// 
-/// 
+/// please ignore this file its not in use but i dont want to delete it :(
 /// 
 /// not used because it doesnt work and there is an alternative. keeping cause i spent 3 hours on this
 /// https://claude.ai/share/fc605568-7cb1-42a1-9b9d-6d1efd020099 
 /// ^^  NaN validation
 /// </summary>
-public class setLazerShape : MonoBehaviour
+public class SetLazerShape : MonoBehaviour
 {
 
 

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9617b7354728a84c8f0e87617282e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectMedkit
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: 566b94e346ef8ff49982eae6d5dca3b5, type: 3}
   rotationSpeed: {x: 0, y: 60, z: 0}
 --- !u!65 &6902556313862410421
 BoxCollider:

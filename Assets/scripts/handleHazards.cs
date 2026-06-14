@@ -1,7 +1,13 @@
 using System;
 using UnityEngine;
 
-public class handleHazards : MonoBehaviour
+
+/// <summary>
+/// author: zac
+/// date: 6/12
+/// description: handles collision with hazard trigger zones, using RAYCASTING
+/// </summary>
+public class HandleHazards : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -13,6 +19,12 @@ public class handleHazards : MonoBehaviour
     private float height;
 
     private CapsuleCollider col;
+
+    [SerializeField]
+    private AudioClip lazerSound;
+    
+    [SerializeField]
+    private AudioClip damageSound;
     
 
 
@@ -27,6 +39,18 @@ public class handleHazards : MonoBehaviour
 
         InvokeRepeating(nameof(checkIfInHazardZone), 0f, 0.5f);
         
+    }
+
+    private void playOnDamage(AudioClip sound)
+    {
+        if(sound != null)
+            {
+                AudioSource.PlayClipAtPoint(sound, transform.position);
+            }
+            else
+            {
+                print("no valid sound");
+            }
     }
 
     void checkIfInHazardZone()
@@ -44,16 +68,19 @@ public class handleHazards : MonoBehaviour
             if (hazardName.Contains("Spikes"))
             {
                 damage = 5.0f;
+                playOnDamage(damageSound);
             }
 
             if (hazardName.Contains("lazer"))
             {
                 damage = 10.0f;
+                playOnDamage(lazerSound);
             }
 
             if (hazardName.Contains("Lava"))
             {
                 damage = 2.0f;
+                playOnDamage(damageSound);
             }
 
             GameManager.Instance.playerHealth = MathF.Max(GameManager.Instance.playerHealth - damage, 0.0f);

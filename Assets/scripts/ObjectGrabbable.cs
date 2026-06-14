@@ -3,13 +3,16 @@ using UnityEngine.AdaptivePerformance;
 
 
 /// <summary>
-/// 
+/// author: zac
+/// date: 6/12
+/// description: code attached to block to allow it to be picked up
 /// 
 /// following https://www.youtube.com/watch?v=2IhzPTS4av4
 /// BUT IF YOU ASK ME TO EXPLAIN THE CODE I CAN DO IT
 /// mesh collider stuff is by me because the item being held hits other items
 /// 
 /// ui code is completely seperate from tutorial
+/// sound code also
 /// 
 /// </summary>
 public class ObjectGrabbable : MonoBehaviour
@@ -18,16 +21,21 @@ public class ObjectGrabbable : MonoBehaviour
     
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
-    private manageUI updateUI;
+    private ManageUI updateUI;
     private MeshCollider cldr;
 
     private BoxCollider childCldr;
+
+    [SerializeField]
+    private AudioClip pickUpSound;
+    [SerializeField]
+    private AudioClip dropSound;
 
     void Start()
     {
        rb = gameObject.GetComponent<Rigidbody>();
        cldr = gameObject.GetComponent<MeshCollider>();
-       updateUI = FindFirstObjectByType<manageUI>();
+       updateUI = FindFirstObjectByType<ManageUI>();
     }
 
     public void Grab(Transform objectGrabPointTransform)
@@ -38,6 +46,15 @@ public class ObjectGrabbable : MonoBehaviour
         cldr.enabled = false;
         gameObject.transform.localScale = gameObject.transform.localScale * 0.5f;
         updateUI.itemPickedUp(gameObject.tag.ToUpper());
+
+        if(pickUpSound != null)
+        {
+            AudioSource.PlayClipAtPoint(pickUpSound, transform.position);
+        }
+        else
+        {
+            print("no valid sound");
+        }
 
     }
 
@@ -51,6 +68,15 @@ public class ObjectGrabbable : MonoBehaviour
         cldr.enabled = true;
         
         updateUI.hidePickItem();
+
+        if(dropSound != null)
+        {
+            AudioSource.PlayClipAtPoint(dropSound, transform.position);
+        }
+        else
+        {
+            print("no valid sound");
+        }
 
         
     }
