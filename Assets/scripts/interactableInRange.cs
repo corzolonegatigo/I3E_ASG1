@@ -24,8 +24,6 @@ public class interactableInRange : MonoBehaviour
 
     private pickUpItem item;
 
-    // reading inputs (outside of character controller)
-
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>();
@@ -33,7 +31,7 @@ public class interactableInRange : MonoBehaviour
 
     public GameObject checkProximity()
     {
-            // + transform.forward * 0.5f + Vector3.up * 1.7f
+        
         ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
          // checks if hit by raycast ray
@@ -105,12 +103,21 @@ public class interactableInRange : MonoBehaviour
                 print(objName);
                 if (objName.Contains("goldbar"))
                 {
-                    CollectBar bar = hit.collider.GetComponent<CollectBar>();
+                    CollectScore bar = hit.collider.GetComponent<CollectScore>();
                     interactFunction = bar;
                     updateUI.showInteractiveOption("Click (LMB) to collect Gold Bar");
 
                     itemInView = "goldbar";
                 }
+                else if (objName.Contains("Safe"))
+                {
+                    CollectScore safe = hit.collider.GetComponent<CollectScore>();
+                    interactFunction = safe;
+                    updateUI.showInteractiveOption("Click (LMB) to open this Safe");
+
+                    itemInView = "goldbar";
+                }
+                
                 else if (objName.Contains("medkit"))
                 {
                     CollectMedkit medkit = hit.collider.GetComponent<CollectMedkit>();
@@ -178,6 +185,7 @@ public class interactableInRange : MonoBehaviour
             } else
             {
                 updateUI.showInteractiveOption("You need a rope to interact with this.");
+                return null;
             }
             
 

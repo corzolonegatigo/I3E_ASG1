@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class handleHazards : MonoBehaviour
@@ -34,20 +35,31 @@ public class handleHazards : MonoBehaviour
         p1 = new Vector3(bounds.center.x, bounds.center.y + height/2 , bounds.center.z);
         p2 = new Vector3(bounds.center.x, bounds.center.y - height/2, bounds.center.z);
 
+        float damage = 0;
+
         Collider[] itemsTouching = Physics.OverlapCapsule(p1, p2, rad*3/4, 1<<7, QueryTriggerInteraction.Collide);
         foreach (Collider item in itemsTouching)
         {
             string hazardName = item.name;
             if (hazardName.Contains("Spikes"))
             {
-                GameManager.Instance.playerHealth -= 5;
+                damage = 5.0f;
             }
 
             if (hazardName.Contains("lazer"))
             {
-                GameManager.Instance.playerHealth -= 10;
+                damage = 10.0f;
             }
+
+            if (hazardName.Contains("Lava"))
+            {
+                damage = 2.0f;
+            }
+
+            GameManager.Instance.playerHealth = MathF.Max(GameManager.Instance.playerHealth - damage, 0.0f);
         }
+
+
         
        
     }

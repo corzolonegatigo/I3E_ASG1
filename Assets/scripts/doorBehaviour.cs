@@ -37,7 +37,7 @@ public class doorBehaviour : MonoBehaviour
         bool inRange = false;
         bounds = rend.bounds;
         origin = new Vector3(bounds.center.x, bounds.center.y, bounds.center.z);
-        extents = new Vector3(bounds.extents.x * 4, bounds.extents.y, bounds.extents.z * 4);
+        extents = new Vector3(bounds.extents.x * 8, bounds.extents.y, bounds.extents.z * 8);
 
         Collider[] itemsTouching = Physics.OverlapBox(origin, extents*5, Quaternion.identity, 1<<3, QueryTriggerInteraction.Collide);
         foreach (Collider item in itemsTouching)
@@ -49,18 +49,20 @@ public class doorBehaviour : MonoBehaviour
             }
         }
 
-        if (!inRange)
+        if (doorOpen)
         {
-            print("closing door auto");
-            if (doorOpen)
+            
+            if (!inRange)
             {
                 animator.SetTrigger("closeDoor");
-                doorOpen = false;
+            doorOpen = false;
             }
+            
+        }
             
 
             
-        }
+        
         
     }
 
@@ -78,7 +80,7 @@ public class doorBehaviour : MonoBehaviour
             animator.SetTrigger("closeDoor");
             
         }
-        print("door state" + doorOpen);
+        print("door state" + doorOpen + "running");
         
         
         print(gameObject.transform.rotation.y);

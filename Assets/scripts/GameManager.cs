@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         updateUI = FindFirstObjectByType<manageUI>(); // i would put this in awake but im scared it doesnt work
+        //Reset();
     }
 
     public void Reset()

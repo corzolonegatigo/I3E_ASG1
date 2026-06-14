@@ -121,7 +121,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1300889626951970931}
-  - component: {fileID: 3062128005639746868}
   m_Layer: 0
   m_Name: lazerSet
   m_TagString: Untagged
@@ -148,21 +147,6 @@ Transform:
   - {fileID: 356347956262200868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3062128005639746868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5352906591513786254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7193a6680bb9afb42addbd23a6990521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::setLazerShape
-  l_point: {fileID: 7928821208090390605}
-  r_point: {fileID: 4678491890436705168}
-  lazer: {fileID: 8062239039244195398}
 --- !u!1 &5363424041607530967
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +255,7 @@ MonoBehaviour:
   r_point: {fileID: 4678491890436705168}
   lazer: {fileID: 4183114493589638879}
   mat: {fileID: 2100000, guid: 3fc4379adf5aea24081c3a61b781adc4, type: 2}
+  parentT: {fileID: 1300889626951970931}
   width: 0.05
 --- !u!64 &5500560941766424611
 MeshCollider:

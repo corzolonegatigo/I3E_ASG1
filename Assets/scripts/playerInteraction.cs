@@ -60,12 +60,11 @@ public class playerInteraction : MonoBehaviour
             if (itemObj.layer == 11)
             {
                 item = itemObj.name;
-
-                if (item.Contains("goldbar"))
+                
+                if (item.Contains("goldbar") || item.Contains("Safe"))
                 {
-                    CollectBar bar = itemObj.GetComponent<CollectBar>();
-                    bar.onCollect();
-                    print("bar");
+                    CollectScore score = itemObj.GetComponent<CollectScore>();
+                    score.onCollect();
 
                     updateUI.hideInteractiveOption();
 
@@ -118,18 +117,7 @@ public class playerInteraction : MonoBehaviour
                     }
                     
                 }  
-
-               
-                else if (item.Contains("rope"))
-                {
-                    if (GameManager.Instance.hasRope)
-                    {
-                        print("here");
-                        connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
-                        connectRopeScript.toggleRopePresence();
-                    }
-                    
-                } else if (item.Contains("Door"))
+                else if (item.Contains("Door"))
                 {
                     print("interacting with door");
                     doorBehaviour doorScript = itemObj.GetComponent<doorBehaviour>();
@@ -144,7 +132,16 @@ public class playerInteraction : MonoBehaviour
             } else if (itemObj.layer == 12)
             {
                 updateUI.winScreen();
-            }
+
+
+            } else if (itemObj.layer == 9)
+                {
+
+                    print("hasrope");
+                    connectRope connectRopeScript = itemObj.GetComponent<connectRope>();
+                    connectRopeScript.toggleRopePresence();
+                    
+                }
             
             
         }

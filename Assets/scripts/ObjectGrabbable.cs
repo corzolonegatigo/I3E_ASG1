@@ -21,6 +21,8 @@ public class ObjectGrabbable : MonoBehaviour
     private manageUI updateUI;
     private MeshCollider cldr;
 
+    private BoxCollider childCldr;
+
     void Start()
     {
        rb = gameObject.GetComponent<Rigidbody>();

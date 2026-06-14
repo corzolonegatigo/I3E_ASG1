@@ -6,7 +6,6 @@ using UnityEngine;
 /// 
 /// 
 /// 
-/// TODO: MAKE ROPE LENGTH DYNAMIC  
 /// </summary>
 public class connectRope : MonoBehaviour
 {
@@ -25,29 +24,28 @@ public class connectRope : MonoBehaviour
     public void toggleRopePresence()
     {
 
+        print("toggline rope" + ropeAttached);
+
         if (!ropeAttached)
         {
             rope.SetActive(true);
-            ropeAttached = !ropeAttached;
+
             GameManager.Instance.hasRope = false;
             GameManager.Instance.inventoryList.Remove("Rope");
         } else
         {
             rope.SetActive(false);
-            ropeAttached = !ropeAttached;
+            
             GameManager.Instance.hasRope = true;
             GameManager.Instance.inventoryList.Add("Rope");
             
         }
 
+        ropeAttached = !ropeAttached;
+
         
         
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

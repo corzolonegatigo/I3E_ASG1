@@ -20,10 +20,15 @@ public class manageUI : MonoBehaviour
     
     [SerializeField]
     private Transform inventoryContainer;
+
+
+    // for the hp components, easier to assign via inspector instead of code, due to the amount of nesting
     [SerializeField]
     private RectTransform healthBar;
     [SerializeField]
     private RectTransform healthBarContainer;
+    [SerializeField]
+    private TMP_Text healthText;
 
 
     private Transform itemPickedUpBox;
@@ -148,16 +153,23 @@ public class manageUI : MonoBehaviour
     public void updateHealth()
     {
         float health = GameManager.Instance.playerHealth;
-        float height = 80.0f; //its not changing anyways. prevents any weirdness
+        float height = 80.0f; //its not changing anyways. setting a fixed value prevents any weirdness
 
         float maxWidth = healthBarContainer.rect.width;
-        float width = maxWidth * (health / 100.0f) ;
+        float width = MathF.Max(maxWidth * (health / 100.0f), 0f) ;
 
-        print(width);
+        
+
+        print(width + "hp w");
         print(height);
         print(health/100.0f);
 
         healthBar.sizeDelta = new Vector2( width , height );
+
+        // adjust health text
+
+        string healthStr = health.ToString() + "/100";
+        healthText.text = healthStr;
 
     }
 

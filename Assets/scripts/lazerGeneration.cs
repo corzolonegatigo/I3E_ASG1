@@ -1,5 +1,7 @@
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -31,6 +33,9 @@ public class lazerGeneration : MonoBehaviour
     private Material mat;
 
     [SerializeField]
+    private Transform parentT;
+
+    [SerializeField]
     private float width;
     // l_point and r_point mesh information
     private MeshRenderer l_rend;
@@ -41,6 +46,8 @@ public class lazerGeneration : MonoBehaviour
 
     private Vector3 l_center;
     private Vector3 r_center;
+
+    private Vector3[] worldVerts;
 
     
 
@@ -67,19 +74,56 @@ public class lazerGeneration : MonoBehaviour
         Vector3 up = Mathf.Abs(Vector3.Dot(direction, Vector3.up)) < 0.99f
              ? Vector3.up
              : Vector3.forward;
-        Vector3[] worldVerts = new Vector3[8]
+
+
+        if (parentT.rotation.y == 0)
         {
-            new Vector3(l_bounds.center.x , l_bounds.center.y - width, l_bounds.center.z - width),
-            new Vector3(l_bounds.center.x , l_bounds.center.y + width, l_bounds.center.z - width),
-            new Vector3(l_bounds.center.x, l_bounds.center.y + width, l_bounds.center.z + width),
-            new Vector3(l_bounds.center.x, l_bounds.center.y - width, l_bounds.center.z + width),
+            worldVerts = new Vector3[8]
+            {
+                new Vector3(l_bounds.center.x , l_bounds.center.y - width, l_bounds.center.z - width),
+                new Vector3(l_bounds.center.x , l_bounds.center.y + width, l_bounds.center.z - width),
+                new Vector3(l_bounds.center.x, l_bounds.center.y + width, l_bounds.center.z + width),
+                new Vector3(l_bounds.center.x, l_bounds.center.y - width, l_bounds.center.z + width),
 
-            new Vector3(r_bounds.center.x, r_bounds.center.y - width, r_bounds.center.z - width),
-            new Vector3(r_bounds.center.x, r_bounds.center.y + width, r_bounds.center.z - width),
-            new Vector3(r_bounds.center.x, r_bounds.center.y + width, r_bounds.center.z + width),
-            new Vector3(r_bounds.center.x, r_bounds.center.y - width, r_bounds.center.z + width),
+                new Vector3(r_bounds.center.x, r_bounds.center.y - width, r_bounds.center.z - width),
+                new Vector3(r_bounds.center.x, r_bounds.center.y + width, r_bounds.center.z - width),
+                new Vector3(r_bounds.center.x, r_bounds.center.y + width, r_bounds.center.z + width),
+                new Vector3(r_bounds.center.x, r_bounds.center.y - width, r_bounds.center.z + width),
 
-        };
+            };
+        } else if (Math.Abs(parentT.rotation.y) / 90 == 0)
+        {
+            worldVerts = new Vector3[8]
+            {
+                new Vector3(l_bounds.center.x - width , l_bounds.center.y - width, l_bounds.center.z),
+                new Vector3(l_bounds.center.x - width , l_bounds.center.y + width, l_bounds.center.z),
+                new Vector3(l_bounds.center.x + width, l_bounds.center.y + width, l_bounds.center.z),
+                new Vector3(l_bounds.center.x + width, l_bounds.center.y - width, l_bounds.center.z),
+
+                new Vector3(r_bounds.center.x - width, r_bounds.center.y - width, r_bounds.center.z),
+                new Vector3(r_bounds.center.x - width, r_bounds.center.y + width, r_bounds.center.z),
+                new Vector3(r_bounds.center.x + width, r_bounds.center.y + width, r_bounds.center.z),
+                new Vector3(r_bounds.center.x + width, r_bounds.center.y - width, r_bounds.center.z),
+
+            };
+        } else
+        {
+            worldVerts = new Vector3[8]
+            {
+                new Vector3(l_bounds.center.x - width , l_bounds.center.y - width, l_bounds.center.z - width),
+                new Vector3(l_bounds.center.x - width , l_bounds.center.y + width, l_bounds.center.z - width),
+                new Vector3(l_bounds.center.x + width, l_bounds.center.y + width, l_bounds.center.z + width),
+                new Vector3(l_bounds.center.x + width, l_bounds.center.y - width, l_bounds.center.z + width),
+
+                new Vector3(r_bounds.center.x - width, r_bounds.center.y - width, r_bounds.center.z - width),
+                new Vector3(r_bounds.center.x - width, r_bounds.center.y + width, r_bounds.center.z - width),
+                new Vector3(r_bounds.center.x + width, r_bounds.center.y + width, r_bounds.center.z + width),
+                new Vector3(r_bounds.center.x + width, r_bounds.center.y - width, r_bounds.center.z + width),
+
+            };
+        }
+        ;
+        
 
         Vector3[] verts = new Vector3[8];
         for (int i = 0; i < 8; i++)
